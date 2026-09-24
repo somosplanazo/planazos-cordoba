@@ -61,6 +61,25 @@ def planes_desde_crudos(crudos, cfg, fechas):
     return planes
 
 
+def planes_desde_manual(fechas):
+    """Lee data/eventos.json (agenda cargada a mano, sin scraping)."""
+    doc = leer_json(RAIZ / "data" / "eventos.json")
+    idx = {f.isoformat(): i for i, f in enumerate(fechas)}
+    planes = []
+    for e in doc["eventos"]:
+        dias = [idx[f] for f in e["fechas"] if f in idx]
+        if not dias:
+            continue
+        planes.append({
+            "days": dias, "time": e.get("time", ""), "title": e["title"], "venue": e["venue"],
+            "cat": e["cat"], "price": e.get("price"), "who": e["who"], "vibe": e.get("vibe", ""),
+            "kind": e.get("kind", "otro"), "cr": bool(e.get("cr")), "url": e.get("url", ""),
+            "pnote": e.get("pnote", ""), "freeDays": [], "out": bool(e.get("out")),
+            "unv": bool(e.get("unv")), "wh": e.get("wh"),
+        })
+    return planes, doc.get("actualizado", "")
+
+
 def planes_desde_extras(fechas):
     out = []
     for x in leer_json(RAIZ / "data" / "extras.json"):
@@ -85,6 +104,7 @@ def main():
     ap.add_argument("--offline", action="store_true", help="usa los datos de prueba de tests/")
     ap.add_argument("--start", help="fecha de inicio AAAA-MM-DD (por defecto, hoy)")
     ap.add_argument("--min", type=int, help="mínimo de eventos para publicar")
+    ap.add_argument("--fuente", choices=["manual", "quehacemos"], help="de dónde salen los eventos")
     ap.add_argument("--out", default=str(RAIZ / "docs" / "index.html"))
     a = ap.parse_args()
 
@@ -94,27 +114,39 @@ def main():
     hoy = dt.date.fromisoformat(a.start) if a.start else ahora.date()
     fechas = [hoy + dt.timedelta(days=i) for i in range(cfg["dias"])]
 
+    fuente = a.fuente or cfg.get("fuente", "manual")
     if a.offline:
-        html = (RAIZ / "tests" / "fixture_listing.html").read_text(encoding="utf-8")
-        crudos = scrape.parse_pagina(html)
         clima = leer_json(RAIZ / "tests" / "fixture_weather.json")
     else:
-        crudos = scrape.bajar(cfg, hoy)
         clima = weather.pronostico(cfg, cfg["dias"])
-
     dias = armar_dias(fechas, clima)
-    planes = planes_desde_crudos(crudos, cfg, fechas)
-    minimo = a.min if a.min is not None else cfg["min_eventos"]
-    if len(planes) < minimo:
-        print(f"ERROR: solo {len(planes)} planes (mínimo {minimo}). No se publica para no pisar "
-              "la página buena con una vacía. Revisá src/scrape.py.", file=sys.stderr)
-        sys.exit(1)
+
+    aviso, eventos_al = "", ""
+    if fuente == "quehacemos":
+        # Solo si el sitio lo permite (respeta robots.txt). Por defecto NO se usa.
+        if a.offline:
+            html = (RAIZ / "tests" / "fixture_listing.html").read_text(encoding="utf-8")
+            crudos = scrape.parse_pagina(html)
+        else:
+            crudos = scrape.bajar(cfg, hoy)
+        planes = planes_desde_crudos(crudos, cfg, fechas)
+        minimo = a.min if a.min is not None else cfg["min_eventos"]
+        if len(planes) < minimo:
+            print(f"ERROR: solo {len(planes)} planes (mínimo {minimo}). No se publica para no pisar "
+                  "la página buena con una vacía. Revisá src/scrape.py.", file=sys.stderr)
+            sys.exit(1)
+    else:
+        planes, eventos_al = planes_desde_manual(fechas)
+        if len(planes) < 5:
+            aviso = ("Todavía no se cargó la agenda de eventos de esta semana. "
+                     "El clima y los museos siguen al día.")
     planes += planes_desde_extras(fechas)
     for i, p in enumerate(planes):
         p["id"] = i
 
     datos = {"start": hoy.isoformat(), "days": dias, "events": planes,
-             "generated": ahora.strftime("%d/%m/%Y %H:%M")}
+             "generated": ahora.strftime("%d/%m/%Y %H:%M"),
+             "aviso": aviso, "events_updated": eventos_al}
     js = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")
     plantilla = (RAIZ / "template.html").read_text(encoding="utf-8")
     if "/*DATA*/null/*END*/" not in plantilla:
