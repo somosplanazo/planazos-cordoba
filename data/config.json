@@ -1,0 +1,27 @@
+{
+  "ciudad": "Córdoba, Argentina",
+  "lat": -31.4201,
+  "lon": -64.1888,
+  "zona_horaria": "America/Argentina/Cordoba",
+  "dias": 7,
+  "min_eventos": 20,
+  "pausa_segundos": 2.0,
+  "fuentes_quehacemos": [
+    "/cordoba",
+    "/cordoba/este-fin-de-semana",
+    "/recitales/cordoba",
+    "/electronica/cordoba",
+    "/eventos-en/cordoba/{mes}-{anio}",
+    "/eventos-en/cordoba/{mes_sig}-{anio_sig}"
+  ],
+  "excluir_palabras": [
+    "Los Reartes", "Conlara", "Traslasierra", "Villa Giardino", "Villa Yacanto",
+    "Despeñaderos", "Río Cuarto", "Rio Cuarto", "Río Tercero", "Rio Tercero",
+    "Carlos Paz", "La Falda", "Jesús María", "Jesus Maria", "Villa María", "Villa Maria",
+    "Villa Allende", "La Calera", "Tanti", "Laboulaye", "Marcos Juárez", "Marcos Juarez",
+    "Sacanta", "Nono", "Idiazábal", "Miramar", "Huerta Grande", "Villa Ciudad Parque",
+    "Villa de las Rosas", "Ansenuza", "San Francisco Solano", "San Carlos de Bolívar",
+    "General Cabrera", "Morteros", "Alta Gracia", "Cosquín", "Cosquin", "Mina Clavero",
+    "Villa General Belgrano"
+  ]
+}
