@@ -1,0 +1,1584 @@
+{
+ "actualizado": "2026-09-23",
+ "eventos": [
+  {
+   "fechas": [
+    "2026-09-23"
+   ],
+   "time": "20:00",
+   "title": "Música a Ciegas: Queen",
+   "venue": "Casa Astral",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Un viaje sonoro y sensorial: escuchás el show a ciegas, sin distracciones.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/musica-a-ciegas-queen-50051",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-23"
+   ],
+   "time": "20:00",
+   "title": "El Carnaval de los Animales",
+   "venue": "Teatro del Libertador General San Martín",
+   "cat": "clasica",
+   "price": 8667,
+   "who": "fa",
+   "vibe": "La suite de Saint-Saëns con guion teatral: pensada para compartir con chicas y chicos.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/el-carnaval-de-los-animales-54223",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-23"
+   ],
+   "time": "21:00",
+   "title": "Somos Tres en Pétalos: tributo a Divididos",
+   "venue": "Pétalos de Sol",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Rock pesado con tributo a Divididos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/somos-tres-en-petalos-tributo-a-divididos-57451",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-23"
+   ],
+   "time": "22:00",
+   "title": "Camilo Nicolás: Es por Ahí",
+   "venue": "Unplugged",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Stand up del humorista cordobés (tiene varias fechas).",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/camilo-nicolas-es-por-ahi-50977",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "18:00",
+   "title": "Florecer en Tangos",
+   "venue": "Teatro del Libertador General San Martín",
+   "cat": "clasica",
+   "price": 12000,
+   "who": "saf",
+   "vibe": "Tango en la sala mayor. Llevá la entrada descargada para entrar rápido.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/florecer-en-tangos-51657",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "19:00",
+   "title": "Mora Navarro + Fransia: live, charla y DJ",
+   "venue": "Centro Cultural España Córdoba",
+   "cat": "musica",
+   "price": 0,
+   "who": "sa",
+   "vibe": "Dos shows en vivo, charla con las artistas y DJ. Entrada libre y gratuita, sujeta a capacidad.",
+   "kind": "centro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/mora-navarro-55869",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "19:00",
+   "title": "Tomás Blanch & The Groovers (abre So Casanova)",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Groove y banda joven en Güemes, desde las 19.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/tomas-blanch-the-groovers-en-club-paraguay-55507",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "20:00",
+   "title": "Música a Ciegas: BTS",
+   "venue": "Casa Astral",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Escuchás a ciegas, con la imaginación en primer plano.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/musica-a-ciegas-bts-50052",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "20:00",
+   "title": "Noelia Pace: Mediumnidad",
+   "venue": "Atenas",
+   "cat": "teatro",
+   "price": null,
+   "who": "a",
+   "vibe": "Show de mediumnidad y conexión con el público.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/noelia-pace-38003",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "20:00",
+   "title": "Un niño llamado Mozart",
+   "venue": "Aula Magna, Facultad de Ciencias Exactas",
+   "cat": "clasica",
+   "price": null,
+   "who": "f",
+   "vibe": "Concierto narrado sobre la infancia de Mozart: ideal para ir con chicos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/un-nino-llamado-mozart-52879",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "20:30",
+   "title": "Tinder Night 20 a 34 + cóctel",
+   "venue": "Vidón Bar, Barrio Jardín",
+   "cat": "fiesta",
+   "price": 25000,
+   "who": "sa",
+   "vibe": "Noche para conocer gente de 20 a 34 años, con cóctel incluido.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/tinder-night-de-20-a-34-coctel-cordoba-51346",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "20:30",
+   "title": "Juevescene de Lenguas: Las Tapadas",
+   "venue": "Auditorio Facultad de Lenguas, sede Centro",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Obra sobre el rol de las mujeres en las guerras de independencia.",
+   "kind": "centro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/juevescene-de-lenguas-las-tapadas-52880",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "21:00",
+   "title": "Marta Gómez: Letra y Música",
+   "venue": "Teatro Real",
+   "cat": "musica",
+   "price": 30000,
+   "who": "sa",
+   "vibe": "Concierto íntimo de la cantautora colombiana por sus 25 años de carrera.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/marta-gomez-letra-y-musica-28389",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "21:00",
+   "title": "Jam de Tango",
+   "venue": "Medio Tono Club de Música",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Concierto y jam abierta de tango.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/jam-de-tango-en-medio-tono-57452",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "",
+   "title": "Rocío Quiroz",
+   "venue": "Sala del Rey",
+   "cat": "musica",
+   "price": 20000,
+   "who": "a",
+   "vibe": "La entrada es válida para 2 personas.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/rocio-quiroz-52154",
+   "pnote": "entrada para 2",
+   "unv": true,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "",
+   "title": "Infase y Andi Antonellini",
+   "venue": "Lugar a confirmar",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Noche de música electrónica.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/infase-y-andi-antonellini-56117",
+   "pnote": "",
+   "unv": true,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24"
+   ],
+   "time": "23:30",
+   "title": "El Ritual de la Monada",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "La banda más rockera del cuarteto, todos los jueves.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/el-ritual-de-la-monada-todos-los-jueves-55792",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-24",
+    "2026-09-25",
+    "2026-09-26"
+   ],
+   "time": "08:30",
+   "title": "Congreso Internacional para el Abordaje de la Violencia Sexual",
+   "venue": "Teatro Comedia",
+   "cat": "charla",
+   "price": 39200,
+   "who": "s",
+   "vibe": "Primer congreso internacional transdisciplinar sobre el tema, jueves a sábado.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/congreso-internacional-para-abordaje-de-la-violencia-sexual-33739",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "19:00",
+   "title": "Fro!",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Fro! vuelve a Córdoba.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/fro-en-cordoba-50053",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "19:00",
+   "title": "Acto de Gentileza x Florian",
+   "venue": "Legrand Mercado Alberdi",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Florian con amigos invitados: canciones propias y clásicos populares.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/acto-de-gentileza-x-florian-52862",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "Bandana 25 años",
+   "venue": "Quality Espacio",
+   "cat": "musica",
+   "price": null,
+   "who": "af",
+   "vibe": "Lowrdez, Lissa, Valeria y Virginia con banda en vivo, coreografías e invitados.",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/bandana-23967",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "Caliope: Emblema",
+   "venue": "Chilli Street Club",
+   "cat": "musica",
+   "price": 15000,
+   "who": "a",
+   "vibe": "Caliope presenta su disco Emblema.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/caliope-en-cordoba-38288",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "Música a Ciegas: Lorde",
+   "venue": "Casa Astral",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Escuchás a ciegas: una experiencia distinta de concierto.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/musica-a-ciegas-lorde-50054",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "Guita",
+   "venue": "Alma de Diamante",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Guita regresa a Córdoba.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/guita-en-alma-de-diamante-54169",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "BPL Trío: Barraza, Pesci, Livadiotis",
+   "venue": "Centro Cultural Córdoba",
+   "cat": "musica",
+   "price": 10000,
+   "who": "sa",
+   "vibe": "Jazz, folclore y world music con improvisación.",
+   "kind": "centro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/bpl-trio-barraza-pesci-livadiotis-54225",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "20:00",
+   "title": "Frozouda",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Show en vivo en Güemes.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/frozouda-55870",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:00",
+   "title": "Sol Despeinada",
+   "venue": "Teatro Cultural de la Cañada",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Show en la Cañada.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/sol-despeinada-40901",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:00",
+   "title": "Sofía Mora: Limbo Tour",
+   "venue": "Studio Theater",
+   "cat": "musica",
+   "price": 25000,
+   "who": "a",
+   "vibe": "Pop luminoso y confesional, con la gira Limbo.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/sofia-mora-limbo-tour-2026-42534",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:00",
+   "title": "Primavera Neurótica: Do Neurona",
+   "venue": "Pétalos de Sol",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Noche de rock en Pétalos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/primavera-neurotica-do-neurona-en-petalos-51680",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:00",
+   "title": "El mecánico es mi novia",
+   "venue": "Sala 12 Teatro",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Comedia disparatada con un viudo, una médium y un espíritu que no se quiere ir.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/el-mecanico-es-mi-novia-nueva-funcion-54170",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:00",
+   "title": "Beatles Jazz",
+   "venue": "Medio Tono Club de Música",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Los Beatles en versión jazz.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/beatles-jazz-en-medio-tono-57453",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "21:30",
+   "title": "Serú Girán por Lebón y Aznar",
+   "venue": "Quality Espacio",
+   "cat": "musica",
+   "price": null,
+   "who": "af",
+   "vibe": "Dos de sus creadores repasan los clásicos de Serú Girán.",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/david-lebon-52966",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "22:00",
+   "title": "Lux Sonum: tributo a Billie Eilish y Lana del Rey",
+   "venue": "MMAU (Museo Metropolitano de Arte Urbano)",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Dos violonchelos, piano y guitarra eléctrica reinventan los hits.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/tributo-a-billie-eilish-lana-del-rey-por-lux-sonum-53323",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:00",
+   "title": "Superfly Córdoba",
+   "venue": "Pez Volcán",
+   "cat": "fiesta",
+   "price": 15000,
+   "who": "a",
+   "vibe": "Baile y videojuegos en la misma fiesta.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/superfly-cordoba-45997",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:00",
+   "title": "Nicola Cruz x Bela (+ Sidirum, Naides, Bora)",
+   "venue": "Angelo de Peredo 325",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Electrónica de raíces andinas con line up extendido.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/nicola-cruz-x-bela-52210",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:00",
+   "title": "Spring Frequency by Sonum: Nacho Padilla",
+   "venue": "Av. Rafael Núñez 4614",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Fiesta de primavera de Sonum.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/25-09-spring-frequency-by-sonum-nacho-padilla-56344",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:59",
+   "title": "Setaoc Mass: open to close",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "fiesta",
+   "price": 18000,
+   "who": "a",
+   "vibe": "Uno de los nombres grandes del techno, toda la noche.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/terra-furia-x-club-paraguay-pres-setaoc-mass-open-to-close-48138",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:55",
+   "title": "Superpride: Revolución!",
+   "venue": "Zen Disco",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Fiesta con amigues para recibir la primavera.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/superpride-revolucion-51681",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:59",
+   "title": "Fiesta Glock",
+   "venue": "Studio Theater",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Pop, perreo y hits que te sabés de memoria.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/fiesta-glock-51682",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:59",
+   "title": "Punkyperreo",
+   "venue": "Casa Babylon",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Vuelve la Punky con line up nuevo.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/punkyperreo-52346",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-25"
+   ],
+   "time": "23:59",
+   "title": "El Loco Amato",
+   "venue": "Atenas",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Cuarteto para bailar toda la noche.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/el-loco-amato-57807",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "14:00",
+   "title": "Caminata guiada al Sendero La Hoya (Reserva Río Yuspe)",
+   "venue": "Reserva Natural del Río Yuspe (fuera de la ciudad)",
+   "cat": "aire",
+   "price": null,
+   "who": "saf",
+   "vibe": "Nivel bajo, apta familias. Parte del Mes del Senderismo.",
+   "kind": "afuera",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/mes-del-senderismo-caminata-guiada-al-sendero-la-hoya-reserva-natural-del-rio-yuspe-49940",
+   "pnote": "",
+   "unv": false,
+   "out": true,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "16:00",
+   "title": "Ecstatic Dance",
+   "venue": "C.C. Casa de Pepino",
+   "cat": "teatro",
+   "price": 15000,
+   "who": "sa",
+   "vibe": "Movimiento libre y bienestar: bailás sin coreografía.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/ecstatic-dance-una-experiencia-de-movimiento-y-bienestar-56221",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "18:00",
+   "title": "CATCH Club & Resonar",
+   "venue": "CATCH",
+   "cat": "fiesta",
+   "price": 15000,
+   "who": "a",
+   "vibe": "Tarde-noche de club.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/catch-club-resonar-54886",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "19:00",
+   "title": "Bhavi: reggaetón old school",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "fiesta",
+   "price": 20000,
+   "who": "a",
+   "vibe": "100% reggaetón viejo, con antecedente de sold out.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/bhavi-en-cordoba-28270",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "19:30",
+   "title": "Lucas Cervetti: piano, cello y violín",
+   "venue": "La Cúpula Espacio Cultural",
+   "cat": "musica",
+   "price": null,
+   "who": "saf",
+   "vibe": "Experiencia íntima y circular, 2 horas. Apta todo público. Puertas 19:30, inicio 20:00.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/lucas-cervetti-53060",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Sexpo Erótica",
+   "venue": "Quality Espacio",
+   "cat": "feria",
+   "price": null,
+   "who": "a",
+   "vibe": "Expo para público adulto (18+).",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/sexpo-erotica-38953",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Mugre presenta Mugre",
+   "venue": "Chilli Street Club",
+   "cat": "musica",
+   "price": 18000,
+   "who": "a",
+   "vibe": "Power trío presenta su segundo disco, coproducido por Tweety González.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/mugre-presenta-mugre-en-cordoba-42917",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Trucha en Córdoba",
+   "venue": "Pez Volcán",
+   "cat": "musica",
+   "price": 15000,
+   "who": "a",
+   "vibe": "Show de Trucha.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/trucha-en-cordoba-45998",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Música a Ciegas: Soda Stereo",
+   "venue": "Casa Astral",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Soda Stereo escuchado a ciegas.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/musica-a-ciegas-soda-stereo-50058",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Amores y Encantos de España",
+   "venue": "Teatro Real",
+   "cat": "clasica",
+   "price": 25000,
+   "who": "saf",
+   "vibe": "Falla en escena: música, lírica, danza y actuación.",
+   "kind": "centro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/amores-y-encantos-de-espana-50097",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Primavera Eléctrica: Fiado + Barro + Maxi Leiva",
+   "venue": "Alma de Diamante",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Tres paisajes sonoros en una noche de primavera.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/primavera-electrica-fiado-barro-maxi-leiva-50985",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Trío Gutiérrez, Aiziczon, Tolosa",
+   "venue": "Teatro del Libertador General San Martín",
+   "cat": "musica",
+   "price": 15000,
+   "who": "sa",
+   "vibe": "Piano, contrabajo y batería: versiones instrumentales y originales.",
+   "kind": "centro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/trio-gutierrez-aiziczon-tolosa-52305",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "20:00",
+   "title": "Data Jazz: Rafa Grand Piano + Fruta Negra",
+   "venue": "Angelo de Peredo 325",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Jazz en vivo.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/data-jazz-en-vivo-rafa-grand-piano-fruta-negra-56346",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "Misterios Mentales",
+   "venue": "Teatro Cultural de la Cañada",
+   "cat": "teatro",
+   "price": null,
+   "who": "af",
+   "vibe": "Show interactivo de mentalismo.",
+   "kind": "centro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/misterios-mentales-agustin-canolik-37039",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "Basta Chicos y su banda",
+   "venue": "Studio Theater",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Show en vivo.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/basta-chicos-y-su-banda-54173",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "Desde los Satélites: homenaje a los Redondos",
+   "venue": "Pétalos de Sol",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Tributo a los Redondos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/desde-los-satelites-en-petalos-56670",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "HABITAR: rincones del desasosiego",
+   "venue": "Teatro María Castaña",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Danza-teatro inspirada en Pessoa. Ganadora del incentivo a la trayectoria 2025.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/habitar-rincones-del-desasosiego-56672",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "Nostalgia Grandioso",
+   "venue": "Espacio Cirulaxia",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Comedia dramática sobre el duelo en la adultez joven, con toques fantásticos.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/nostalgia-grandioso-56673",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "21:00",
+   "title": "Homenaje a Willy Crook",
+   "venue": "Medio Tono Club de Música",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Homenaje en vivo.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/homenaje-a-willy-crook-en-medio-tono-57454",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "22:00",
+   "title": "Agujero Interior: tributo a Virus",
+   "venue": "Escaleno Resto Bar",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Tributo a Virus.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/agujero-interior-tributo-a-virus-escaleno-resto-bar-cordoba-54174",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "22:00",
+   "title": "All Night Bounce",
+   "venue": "Icono Club",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Noche dedicada al bounce, con pista hasta el final.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/all-night-bounce-icono-club-54233",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:00",
+   "title": "Cuartero x Dahaus! (+ Nacho Bolognani)",
+   "venue": "Palacio Alsina",
+   "cat": "fiesta",
+   "price": 40000,
+   "who": "a",
+   "vibe": "Fiesta grande de electrónica.",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/cuartero-x-dahaus-palacio-alsina-47708",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:00",
+   "title": "Día de la Primavera con La Mona",
+   "venue": "Forja Centro de Eventos",
+   "cat": "fiesta",
+   "price": 50000,
+   "who": "a",
+   "vibe": "Baile de cuarteto. Sectores General, VIP y Adrenalina.",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/forja-dia-de-la-primavera-52944",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:00",
+   "title": "Zen Disco (sábado)",
+   "venue": "Zen, Av. Julio A. Roca 730",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Restó desde las 23 y disco desde las 00.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/zen-disco-sab-26-sep-55795",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:00",
+   "title": "Primavera #parte2: Patio de Rosario Chateau",
+   "venue": "Rosario Chateau",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Fiesta de primavera en el patio.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/sabado-26-09-primavera-parte2-patio-de-rosario-chateau-57706",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:30",
+   "title": "Core Night",
+   "venue": "La Barra Boliche",
+   "cat": "fiesta",
+   "price": 6000,
+   "who": "a",
+   "vibe": "Boliche, entrada económica.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/core-night-42561",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:30",
+   "title": "Cumple 5 años de Lobos Sueltos",
+   "venue": "990 Arte Club",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Fiesta de primavera con banda invitada, sorteos y regalos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/cumpleanos-estallando-con-sabor-a-primavera-lobos-sueltos-50988",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Lazaro Caballero y Facundo Toro",
+   "venue": "Opus Costanera",
+   "cat": "musica",
+   "price": 30000,
+   "who": "a",
+   "vibe": "Show en Opus Costanera.",
+   "kind": "grande",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/lazaro-caballero-y-facundo-toro-30709",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Safaera: reggaetón old school",
+   "venue": "Club Paraguay, Güemes",
+   "cat": "fiesta",
+   "price": 9000,
+   "who": "a",
+   "vibe": "Reggaetón viejo toda la noche.",
+   "kind": "guemes",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/safaera-en-cordoba-46000",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Rutera Bailable",
+   "venue": "Alma de Diamante",
+   "cat": "fiesta",
+   "price": 8000,
+   "who": "a",
+   "vibe": "Baile en el Mercado de Arte Contemporáneo.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/ruterea-bailable-47458",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Sabroso",
+   "venue": "Atenas",
+   "cat": "fiesta",
+   "price": 12300,
+   "who": "a",
+   "vibe": "Cuarteto para bailar.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/sabroso-51397",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Babylon Garden",
+   "venue": "Casa Babylon",
+   "cat": "fiesta",
+   "price": 0,
+   "who": "a",
+   "vibe": "Progressive house, techno y sets en vivo. Entrada gratis hasta la 1:30.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/babylon-garden-3-ediciones-53328",
+   "pnote": "GRATIS hasta 1:30",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Volver a los 80s y 90s",
+   "venue": "Studio Theater",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Hits de los 80 y 90, sin cachengue.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/fiesta-volver-a-los-80s-y-90s-en-studio-theater-sabado-26-de-sept-53329",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-26"
+   ],
+   "time": "23:59",
+   "title": "Techno x Bela: Paredón + Rathermodular",
+   "venue": "Angelo de Peredo 325",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Techno en vivo y DJs.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/techno-x-bela-pres-paredon-y-rathermodular-26-09-52937",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "08:00",
+   "title": "Maratón Colegio de Abogados (10k y 6k)",
+   "venue": "Duarte Quirós y Bolívar",
+   "cat": "aire",
+   "price": null,
+   "who": "sa",
+   "vibe": "Carrera de calle de 10 y 6 km.",
+   "kind": "deporte",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/maraton-colegio-de-abogados-27993",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "12:00",
+   "title": "Fieston Diablero",
+   "venue": "Villa Retiro",
+   "cat": "fiesta",
+   "price": 19000,
+   "who": "af",
+   "vibe": "Fiesta de mediodía. La entrada vale para 4 personas.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/fieston-diablero-50798",
+   "pnote": "entrada para 4",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "12:00",
+   "title": "Picadas en Berta",
+   "venue": "Berta Circuito de Pruebas",
+   "cat": "aire",
+   "price": null,
+   "who": "a",
+   "vibe": "Picadas en circuito de pruebas.",
+   "kind": "afuera",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/picadas-en-berta-54234",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "20:00",
+   "title": "Misty Soul Choir",
+   "venue": "Sindicato de Maravillas",
+   "cat": "musica",
+   "price": null,
+   "who": "sa",
+   "vibe": "Un coro para viajar al corazón del soul y el blues.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/misty-soul-choir-52352",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "20:00",
+   "title": "Entre Grandes, por César Torres",
+   "venue": "Teatro Ciudad de las Artes",
+   "cat": "musica",
+   "price": 10000,
+   "who": "saf",
+   "vibe": "Estacionamiento gratis en el predio presentando la entrada.",
+   "kind": "auto",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/entre-grandes-por-cesar-torres-56708",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "20:00",
+   "title": "El Enfermo Improvisado",
+   "venue": "Teatro María Castaña",
+   "cat": "teatro",
+   "price": null,
+   "who": "sa",
+   "vibe": "Molière con improvisación: el público deja secretos en un cofre.",
+   "kind": "otro",
+   "cr": true,
+   "url": "https://www.quehacemos.com.ar/eventos/el-enfermo-improvisado-56710",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "20:00",
+   "title": "Urieel (Festival Pulso Underground)",
+   "venue": "Liverpool Club",
+   "cat": "fiesta",
+   "price": null,
+   "who": "a",
+   "vibe": "Fecha del festival Pulso Underground.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/urieel-en-liverpool-club-54235",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  },
+  {
+   "fechas": [
+    "2026-09-27"
+   ],
+   "time": "21:00",
+   "title": "Blood Sugar: tributo a Red Hot Chili Peppers",
+   "venue": "Pétalos de Sol",
+   "cat": "musica",
+   "price": null,
+   "who": "a",
+   "vibe": "Blood Sugar vuelve a Pétalos.",
+   "kind": "otro",
+   "cr": false,
+   "url": "https://www.quehacemos.com.ar/eventos/blood-sugar-tributo-a-red-hot-chili-peppers-55510",
+   "pnote": "",
+   "unv": false,
+   "out": false,
+   "wh": null
+  }
+ ]
+}
