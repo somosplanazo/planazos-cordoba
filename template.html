@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Planazos Córdoba · agenda de la semana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Bagel+Fat+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff4dc; --card:#fffdf7; --ink:#1a1326; --line:#1a1326; --shadow:#1a1326; --muted:#5d5470; --on:#1a1326;
+  --pink:#ff4d94; --blue:#6f93ff; --yellow:#ffd23f; --mint:#35e0b0; --orange:#ff8a1f; --purple:#a884ff; --green:#8ee35a; --teal:#2fd0e0;
+  --display:"Bagel Fat One","Arial Black",Impact,system-ui,sans-serif;
+  --body:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#150f22; --card:#211833; --ink:#fbf3e2; --line:#fbf3e2; --shadow:#ff4d94; --muted:#b7add0; }
+}
+:root[data-theme="dark"]{ --bg:#150f22; --card:#211833; --ink:#fbf3e2; --line:#fbf3e2; --shadow:#ff4d94; --muted:#b7add0; }
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:16px}
+button{font-family:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+
+/* header */
+.hero{position:relative;padding:18px 0 6px}
+.logo{font-family:var(--display);font-size:clamp(44px,11vw,96px);line-height:.92;margin:0;letter-spacing:-1px;transform:rotate(-1.5deg);display:inline-block}
+.logo span{display:inline-block;padding:0 .12em;border:3px solid var(--line);border-radius:14px;box-shadow:5px 5px 0 var(--shadow);margin-right:.08em;color:var(--on)}
+.logo .a{background:var(--pink)} .logo .b{background:var(--yellow);transform:rotate(2deg)} .logo .c{background:var(--mint);transform:rotate(-1deg)}
+.sub{margin:14px 0 0;font-size:clamp(16px,2.6vw,20px);font-weight:600;max-width:640px}
+.stamp{display:inline-block;margin-top:10px;font-size:13px;font-weight:800;padding:4px 10px;border:2px dashed var(--line);border-radius:999px;background:var(--card)}
+.sticker{position:absolute;right:4px;top:18px;width:96px;height:96px;border-radius:50%;background:var(--orange);border:3px solid var(--line);box-shadow:4px 4px 0 var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-size:15px;line-height:1.05;transform:rotate(12deg);color:var(--on)}
+@media(max-width:560px){.sticker{display:none}}
+
+.ticker{overflow:hidden;border:3px solid var(--line);border-radius:12px;background:var(--yellow);color:var(--on);margin:16px 0;box-shadow:4px 4px 0 var(--shadow)}
+.ticker div{display:inline-block;white-space:nowrap;padding:8px 0;font-weight:800;animation:tick 38s linear infinite}
+.ticker b{margin:0 18px}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.ticker div{animation:none}}
+
+.banner{display:none;border:3px solid var(--line);background:var(--orange);color:var(--on);border-radius:12px;padding:10px 14px;font-weight:800;margin:8px 0 16px;box-shadow:4px 4px 0 var(--shadow)}
+
+/* day chips */
+.days{display:flex;gap:10px;overflow-x:auto;padding:6px 4px 14px;scroll-snap-type:x proximity}
+.day{flex:0 0 auto;min-width:92px;scroll-snap-align:start;text-align:center;background:var(--card);border:3px solid var(--line);border-radius:16px;padding:8px 10px;box-shadow:4px 4px 0 var(--shadow);transition:transform .12s}
+.day:hover{transform:translate(-1px,-2px)}
+.day .dn{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.day .dd{font-family:var(--display);font-size:26px;line-height:1}
+.day .dw{font-size:13px;font-weight:600;color:var(--muted)}
+.day[aria-pressed="true"]{background:var(--pink);color:var(--on);transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.day[aria-pressed="true"] .dw{color:var(--on)}
+.day.all{display:flex;flex-direction:column;justify-content:center}
+.day .today{display:block;font-size:11px;font-weight:800;color:var(--on);background:var(--yellow);border-radius:999px;margin-top:3px}
+
+/* weather panel */
+.panel{display:grid;grid-template-columns:1fr;gap:12px;margin:4px 0 18px}
+@media(min-width:760px){.panel{grid-template-columns:1.2fr 1fr}}
+.box{border:3px solid var(--line);border-radius:16px;background:var(--card);padding:14px;box-shadow:5px 5px 0 var(--shadow)}
+.box h2{margin:0 0 6px;font-family:var(--display);font-weight:400;font-size:22px}
+.wx{display:flex;gap:14px;align-items:center}
+.wx .big{font-size:52px;line-height:1}
+.wx p{margin:2px 0}
+.mission{background:var(--mint);color:var(--on)}
+.mission p{margin:0;font-weight:600}
+
+/* filters */
+.filters{display:flex;flex-direction:column;gap:10px;margin:0 0 14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row .lab{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-right:2px}
+.chip{border:2.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;box-shadow:2px 2px 0 var(--shadow);transition:transform .1s}
+.chip:hover{transform:translateY(-1px)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);border-radius:12px;padding:9px 12px;font:inherit;background:var(--card);color:var(--ink);box-shadow:3px 3px 0 var(--shadow)}
+.surprise{border:3px solid var(--line);background:var(--purple);color:var(--on);border-radius:12px;padding:9px 14px;font-weight:800;box-shadow:3px 3px 0 var(--shadow)}
+.surprise:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+
+/* results */
+.dayhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:26px 0 10px;border-bottom:4px solid var(--line);padding-bottom:6px}
+.dayhead h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,5vw,38px);margin:0}
+.dayhead small{font-weight:700;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:16px}
+.card{position:relative;display:flex;flex-direction:column;gap:6px;background:var(--card);border:3px solid var(--line);border-radius:16px;padding:12px 12px 14px;box-shadow:5px 5px 0 var(--c,var(--pink));min-width:0}
+.card.pop{animation:pop .7s}
+@keyframes pop{0%{transform:scale(1)}30%{transform:scale(1.04) rotate(-1deg)}100%{transform:scale(1)}}
+.card .top{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:800;border:2px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--on)}
+.pill.time{background:var(--yellow)}
+.pill.cat{background:var(--c,var(--pink))}
+.fav{margin-left:auto;border:2px solid var(--line);background:var(--card);border-radius:50%;width:32px;height:32px;font-size:16px;line-height:1;padding:0}
+.fav[aria-pressed="true"]{background:var(--pink);color:var(--on)}
+.card h3{margin:2px 0 0;font-size:19px;line-height:1.15;font-weight:800;overflow-wrap:anywhere}
+.venue{margin:0;font-weight:600;color:var(--muted);font-size:14px;overflow-wrap:anywhere}
+.vibe{margin:0;font-size:14px}
+.price{align-self:flex-start;font-weight:800;font-size:15px;padding:3px 10px;border:2px solid var(--line);border-radius:10px;background:var(--card)}
+.price.free{background:var(--mint);color:var(--on)}
+.price.unk{font-weight:600;color:var(--muted);border-style:dashed}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12.5px;font-weight:700;background:color-mix(in srgb,var(--c,var(--pink)) 25%,var(--card));border-radius:8px;padding:2px 8px;border:1.5px solid var(--line)}
+.tips{display:grid;gap:5px;font-size:13.5px;border-top:2px dashed var(--line);padding-top:8px;margin-top:2px}
+.tips div{display:flex;gap:8px}
+.tips span:first-child{flex:0 0 auto}
+.more{margin-top:auto;padding-top:6px;font-weight:800;font-size:14px}
+.warn{font-size:12px;font-weight:800;color:var(--on);background:var(--orange);border-radius:6px;padding:1px 7px;align-self:flex-start}
+.empty{border:3px dashed var(--line);border-radius:16px;padding:26px;text-align:center;font-weight:700;background:var(--card)}
+.count{font-weight:800;margin:6px 0 0}
+footer{margin:36px 0 12px;font-size:13px;color:var(--muted);border-top:3px solid var(--line);padding-top:12px}
+footer b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1 class="logo" aria-label="Planazos"><span class="a">PLAN</span><span class="b">A</span><span class="c">ZOS</span></h1>
+    <div class="sticker">Córdoba<br>capital</div>
+    <p class="sub">Todo lo que pasa en Córdoba capital esta semana: recitales, orquesta, museos, teatro, fiestas y más. Con precio, clima, qué ponerte y cómo llegar.</p>
+    <span class="stamp" id="stamp">Cargando…</span>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+  <div class="banner" id="banner"></div>
+
+  <div class="days" id="days" role="group" aria-label="Elegí el día"></div>
+
+  <section class="panel" id="panel"></section>
+
+  <section class="filters" aria-label="Filtros">
+    <div class="row">
+      <input type="search" id="q" placeholder="Buscar banda, lugar, tipo de plan..." aria-label="Buscar">
+      <button class="surprise" id="surprise" type="button">🎲 Sorprendeme</button>
+    </div>
+    <div class="row"><span class="lab">Qué</span><span id="cats" class="row"></span></div>
+    <div class="row"><span class="lab">Con quién</span><span id="whos" class="row"></span></div>
+    <div class="row"><span class="lab">Bolsillo</span><span id="prices" class="row"></span>
+      <button class="chip" id="crBtn" type="button" aria-pressed="false">🎨 Solo lo creativo</button>
+      <button class="chip" id="favBtn" type="button" aria-pressed="false">❤️ Mis planes</button></div>
+  </section>
+
+  <div class="count" id="count"></div>
+  <main id="results"></main>
+
+  <footer>
+    <p><b>Cómo leerlo:</b> los precios son los valores listados en las ticketeras cuando se actualizó la agenda (pueden variar por sector o subir sobre la fecha). Los horarios "Noche" son estimados: confirmalos en el link de cada plan. La temperatura de cada plan es una estimación según el pronóstico del día y la hora. Los lugares marcados "a confirmar" no tienen dirección o dato verificado.</p>
+    <p>Fuentes: agenda de <b>Qué Hacemos</b> y <b>Agencia Córdoba Cultura</b>. Pronóstico: <b>Open-Meteo</b>. La agenda se actualiza sola todos los días.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- datos (los inyecta src/build.py) ---------- */
+var DATA = /*DATA*/null/*END*/;
+var BASE = new Date(DATA.start+"T00:00:00");
+var DAYS = DATA.days;
+var EV = DATA.events;
+var CATS = {
+  musica:{l:"Música en vivo",e:"🎸",c:"var(--pink)"},
+  fiesta:{l:"Fiestas y electrónica",e:"🪩",c:"var(--purple)"},
+  teatro:{l:"Teatro, humor y danza",e:"🎭",c:"var(--orange)"},
+  clasica:{l:"Clásica, tango y orquesta",e:"🎻",c:"var(--blue)"},
+  arte:{l:"Museos y arte",e:"🖼️",c:"var(--mint)"},
+  feria:{l:"Ferias y expos",e:"🧺",c:"var(--yellow)"},
+  aire:{l:"Aire libre y deporte",e:"🥾",c:"var(--green)"},
+  charla:{l:"Charlas y congresos",e:"💬",c:"var(--teal)"}
+};
+var WHO = {s:"🧍 Va bien sola", a:"👯 Con amigos", f:"👨‍👩‍👧 En familia"};
+
+/* ---------- utilidades ---------- */
+function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+function fmt(n){ return "$"+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
+function hourOf(e){
+  if(e.wh!=null) return e.wh;
+  var m=/^(\d{1,2}):(\d{2})/.exec(e.time||"");
+  return m ? parseInt(m[1],10)+parseInt(m[2],10)/60 : null;
+}
+function tempAt(h,d){ var f=0.5*(1+Math.cos(2*Math.PI*(h-15)/24)); return d.lo+(d.hi-d.lo)*f; }
+function look(t){
+  if(t<10) return "Abrigo grueso, gorro y bufanda.";
+  if(t<15) return "Campera y capas: nada de remera sola.";
+  if(t<19) return "Buzo o campera liviana sobre una remera.";
+  if(t<24) return "Remera o camisa y una capa liviana por si refresca.";
+  if(t<29) return "Ropa liviana y fresca.";
+  return "Lo más liviano que tengas; agua y protector solar.";
+}
+function extraLook(e){
+  if(e.cat==="fiesta") return " Zapas cómodas para bailar y poco encima.";
+  if(e.cat==="teatro"||e.cat==="clasica") return " Producida pero cómoda: te vas a sentar un buen rato.";
+  if(e.cat==="musica") return " Zapas cómodas: probablemente estés parada.";
+  if(e.cat==="arte") return " Calzado cómodo: se camina bastante.";
+  if(e.cat==="aire") return " Zapatillas, gorra, protector solar y agua.";
+  if(e.cat==="feria") return " Calzado cómodo y algo de efectivo.";
+  if(e.cat==="charla") return " Look cómodo y prolijo.";
+  return "";
+}
+function dress(e,di){
+  var d=DAYS[di], h=hourOf(e); if(h==null) h=20;
+  var t=Math.round(tempAt(h,d));
+  var rain = d.r>=15 ? " Paraguas por las dudas." : "";
+  return "~"+t+"° · "+look(t)+extraLook(e)+rain;
+}
+function ride(e){
+  var h=hourOf(e); var late=(h!=null&&h>=22);
+  switch(e.kind){
+    case "centro": return ["🚶","A pie o en Uber: estacionar en el centro es una odisea."];
+    case "guemes": return ["🚕","Uber: estacionar en Güemes de noche es deporte extremo."];
+    case "grande": return ["🚕","Uber ida y vuelta: a la salida se arma cola de autos. En auto, andá temprano."];
+    case "auto":   return ["🚗","Auto va bien: estacionamiento gratis en el predio con la entrada."];
+    case "afuera": return ["🚗","Auto (o compartilo con alguien): queda fuera del centro."];
+    case "deporte":return ["🚌","Uber o colectivo: suelen cortar calles alrededor. Salí con tiempo."];
+    default: return late ? ["🚕","Uber o Cabify de ida y vuelta: volvés de madrugada."] : ["🚕","Uber es lo más simple. Confirmá la dirección en el link."];
+  }
+}
+function priceInfo(e,di){
+  if(e.freeDays.indexOf(di)>-1) return {t:"GRATIS los miércoles",c:"free"};
+  if(e.price===0) return {t:e.pnote||"GRATIS",c:"free"};
+  if(typeof e.price==="number") return {t:fmt(e.price)+(e.pnote?" · "+e.pnote:""),c:""};
+  return {t:"Precio: ver entrada",c:"unk"};
+}
+function timeLabel(e){
+  if(!e.time) return "Horario a confirmar";
+  if(e.time==="23:59") return "Noche";
+  if(e.time==="tarde") return "Tarde";
+  return e.time;
+}
+function sortKey(e){ var h=hourOf(e); return h==null?99:h; }
+
+/* ---------- estado ---------- */
+var S={day:"all",cat:"all",who:"all",price:"all",q:"",cr:false,fav:false};
+var favs=[];
+try{ favs=JSON.parse(localStorage.getItem("planazos-favs")||"[]"); if(!Array.isArray(favs)) favs=[]; }catch(err){ favs=[]; }
+function saveFavs(){ try{ localStorage.setItem("planazos-favs",JSON.stringify(favs)); }catch(err){} }
+
+var now=new Date();
+var todayIdx=Math.round((new Date(now.getFullYear(),now.getMonth(),now.getDate())-BASE)/86400000);
+if(todayIdx>=0&&todayIdx<=6) S.day=todayIdx;
+
+/* ---------- render de controles ---------- */
+function wxIcon(d){ if(d.hi>=33) return "🔥"; if(d.r>=15) return "⛅"; if(d.r>=10) return "🌤️"; return "☀️"; }
+
+function renderDays(){
+  var box=document.getElementById("days"), h="";
+  h+='<button class="day all" data-day="all" aria-pressed="'+(S.day==="all")+'"><span class="dn">Toda la</span><span class="dd">SEMANA</span></button>';
+  DAYS.forEach(function(d,i){
+    h+='<button class="day" data-day="'+i+'" aria-pressed="'+(S.day===i)+'">'
+      +'<div class="dn">'+d.n+'</div><div class="dd">'+d.d+'</div>'
+      +'<div class="dw">'+wxIcon(d)+' '+Math.round(d.lo)+'°/'+Math.round(d.hi)+'°</div>'
+      +(i===todayIdx?'<span class="today">HOY</span>':'')+'</button>';
+  });
+  box.innerHTML=h;
+}
+function renderPanel(){
+  var p=document.getElementById("panel");
+  if(S.day==="all"){
+    var hot=DAYS.reduce(function(m,d){return d.hi>m.hi?d:m;},DAYS[0]);
+    var wet=DAYS.filter(function(d){return d.r>=40;});
+    p.innerHTML='<div class="box"><h2>La semana en una mirada</h2>'
+      +'<p>El día más caluroso es el '+hot.full.toLowerCase()+' '+hot.d+' ('+Math.round(hot.hi)+'° de máxima). '
+      +(wet.length?'Ojo con la lluvia el '+wet.map(function(d){return d.full.toLowerCase()+' '+d.d;}).join(" y el ")+'. ':'Hay poca chance de lluvia en general. ')
+      +'Elegí un día para ver cómo ir vestida.</p></div>'
+      +'<div class="box mission"><h2>🎨 Misión creativa</h2><p>Elegí un día y te doy una misión para llevar a tu plan.</p></div>';
+    return;
+  }
+  var d=DAYS[S.day];
+  var night=Math.round(tempAt(22,d)), noon=Math.round(tempAt(15,d));
+  p.innerHTML='<div class="box"><div class="wx"><div class="big">'+wxIcon(d)+'</div><div>'
+    +'<h2>'+d.full+' '+d.d+': '+Math.round(d.lo)+'° a '+Math.round(d.hi)+'°</h2>'
+    +'<p>Lluvia: '+d.r+'%.</p>'
+    +'<p><b>De tarde (~'+noon+'°):</b> '+look(noon)+'</p>'
+    +'<p><b>De noche (~'+night+'°):</b> '+look(night)+'</p></div></div></div>'
+    +'<div class="box mission"><h2>🎨 Misión creativa</h2><p>'+esc(DAYS[S.day].m)+'</p></div>';
+}
+function chipRow(id,items,key){
+  var h="";
+  items.forEach(function(it){
+    h+='<button class="chip" type="button" data-k="'+key+'" data-v="'+it.v+'" aria-pressed="'+(S[key]===it.v)+'">'+it.t+'</button>';
+  });
+  document.getElementById(id).innerHTML=h;
+}
+function renderFilters(){
+  var cats=[{v:"all",t:"Todo"}];
+  Object.keys(CATS).forEach(function(k){ cats.push({v:k,t:CATS[k].e+" "+CATS[k].l}); });
+  chipRow("cats",cats,"cat");
+  chipRow("whos",[{v:"all",t:"Todos"},{v:"s",t:"🧍 Sola"},{v:"a",t:"👯 Amigos"},{v:"f",t:"👨‍👩‍👧 Familia"}],"who");
+  chipRow("prices",[{v:"all",t:"Cualquiera"},{v:"free",t:"Gratis"},{v:"15k",t:"Hasta $15.000"}],"price");
+  document.getElementById("crBtn").setAttribute("aria-pressed",S.cr);
+  document.getElementById("favBtn").setAttribute("aria-pressed",S.fav);
+}
+
+/* ---------- resultados ---------- */
+function match(e,di){
+  if(e.days.indexOf(di)<0) return false;
+  if(S.cat!=="all"&&e.cat!==S.cat) return false;
+  if(S.who!=="all"&&e.who.indexOf(S.who)<0) return false;
+  if(S.price==="free"){ if(!(e.price===0||e.freeDays.indexOf(di)>-1)) return false; }
+  if(S.price==="15k"){ if(!(e.price===0||e.freeDays.indexOf(di)>-1||(typeof e.price==="number"&&e.price<=15000))) return false; }
+  if(S.cr&&!e.cr) return false;
+  if(S.fav&&favs.indexOf(e.id)<0) return false;
+  if(S.q){
+    var hay=(e.title+" "+e.venue+" "+e.vibe+" "+CATS[e.cat].l).toLowerCase();
+    if(hay.indexOf(S.q.toLowerCase())<0) return false;
+  }
+  return true;
+}
+function cardHTML(e,di){
+  var c=CATS[e.cat], pr=priceInfo(e,di), rd=ride(e);
+  var tags=""; ["s","a","f"].forEach(function(k){ if(e.who.indexOf(k)>-1) tags+='<span class="tag">'+WHO[k]+'</span>'; });
+  if(e.cr) tags+='<span class="tag">🎨 Creativo</span>';
+  var isFav=favs.indexOf(e.id)>-1;
+  var warn=(e.out?'<span class="warn">Fuera de la capital</span>':"")+(e.unv?'<span class="warn">A confirmar</span>':"");
+  return '<article class="card" data-id="'+e.id+'" style="--c:'+c.c+'">'
+    +'<div class="top"><span class="pill time">'+esc(timeLabel(e))+'</span><span class="pill cat">'+c.e+' '+esc(c.l)+'</span>'
+    +'<button class="fav" type="button" data-fav="'+e.id+'" aria-pressed="'+isFav+'" aria-label="Guardar plan">'+(isFav?"♥":"♡")+'</button></div>'
+    +'<h3>'+esc(e.title)+'</h3>'
+    +'<p class="venue">📍 '+esc(e.venue)+'</p>'
+    +warn
+    +'<p class="vibe">'+esc(e.vibe)+'</p>'
+    +'<div class="price '+pr.c+'">💸 '+esc(pr.t)+'</div>'
+    +'<div class="tags">'+tags+'</div>'
+    +'<div class="tips"><div><span>👗</span><span>'+esc(dress(e,di))+'</span></div>'
+    +'<div><span>'+rd[0]+'</span><span>'+esc(rd[1])+'</span></div></div>'
+    +(e.url?'<a class="more" href="'+esc(e.url)+'" target="_blank" rel="noopener noreferrer">Ver info y entradas ↗</a>':"")
+    +'</article>';
+}
+function render(){
+  renderDays(); renderPanel(); renderFilters();
+  var list=document.getElementById("results"), html="", total=0;
+  var range = S.day==="all" ? [0,1,2,3,4,5,6] : [S.day];
+  range.forEach(function(di){
+    var items=EV.filter(function(e){return match(e,di);}).sort(function(a,b){return sortKey(a)-sortKey(b);});
+    total+=items.length;
+    var d=DAYS[di];
+    if(S.day==="all"){
+      html+='<div class="dayhead"><h2>'+d.full+' '+d.d+'</h2><small>'+wxIcon(d)+' '+Math.round(d.lo)+'° / '+Math.round(d.hi)+'° · '+items.length+' planes</small></div>';
+    }
+    if(items.length){
+      html+='<div class="grid">'+items.map(function(e){return cardHTML(e,di);}).join("")+'</div>';
+    } else if(di>=5){
+      html+='<div class="empty">Todavía no hay planes confirmados con estos filtros. Los últimos días se van completando sobre la fecha.</div>';
+    } else {
+      html+='<div class="empty">Nada con estos filtros. Probá sacar alguno o mirar otro día.</div>';
+    }
+  });
+  if(S.day!=="all"&&DAYS[S.day].dow===0){
+    html='<div class="empty" style="margin-bottom:14px">Los lunes los museos están cerrados y suele haber pocos planes confirmados.</div>'+html;
+  }
+  list.innerHTML=html;
+  document.getElementById("count").textContent = total+(total===1?" plan":" planes")+(S.day==="all"?" en la semana":"");
+}
+
+/* ---------- eventos ---------- */
+document.getElementById("days").addEventListener("click",function(ev){
+  var b=ev.target.closest(".day"); if(!b) return;
+  var v=b.getAttribute("data-day"); S.day = v==="all" ? "all" : parseInt(v,10);
+  render();
+});
+document.querySelector(".filters").addEventListener("click",function(ev){
+  var b=ev.target.closest("button"); if(!b) return;
+  if(b.id==="crBtn"){ S.cr=!S.cr; render(); return; }
+  if(b.id==="favBtn"){ S.fav=!S.fav; render(); return; }
+  if(b.id==="surprise") return;
+  var k=b.getAttribute("data-k"); if(!k) return;
+  S[k]=b.getAttribute("data-v"); render();
+});
+document.getElementById("q").addEventListener("input",function(ev){ S.q=ev.target.value.trim(); render(); });
+document.getElementById("results").addEventListener("click",function(ev){
+  var b=ev.target.closest(".fav"); if(!b) return;
+  var id=parseInt(b.getAttribute("data-fav"),10), i=favs.indexOf(id);
+  if(i>-1) favs.splice(i,1); else favs.push(id);
+  saveFavs(); render();
+});
+document.getElementById("surprise").addEventListener("click",function(){
+  var cards=document.querySelectorAll(".card");
+  if(!cards.length) return;
+  var c=cards[Math.floor(Math.random()*cards.length)];
+  c.scrollIntoView({behavior:"smooth",block:"center"});
+  c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop");
+});
+
+/* ticker */
+(function(){
+  var frases=["Recitales","Orquesta","Museos gratis los miércoles","Teatro","Fiestas","Ferias","Jazz","Cuarteto","Danza","Stand up","Electrónica","Tango","Charlas"];
+  var t=""; frases.forEach(function(f){ t+="<b>✦ "+f+"</b>"; });
+  document.getElementById("tick").innerHTML=t+t;
+})();
+
+/* sello y aviso si la agenda quedó vieja */
+(function(){
+  var f=function(d){return d.d+"/"+(new Date(d.iso+"T00:00:00").getMonth()+1);};
+  document.getElementById("stamp").textContent="Del "+f(DAYS[0])+" al "+f(DAYS[DAYS.length-1])+" · actualizado "+DATA.generated;
+  if(todayIdx>DAYS.length-1){
+    var bn=document.getElementById("banner");
+    bn.style.display="block";
+    bn.textContent="Ojo: esta agenda está desactualizada (última actualización: "+DATA.generated+").";
+  }
+})();
+
+render();
+})();
+</script>
+</body>
+</html>
