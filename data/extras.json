@@ -1,0 +1,35 @@
+[
+  {
+    "titulo": "Museos: Caraffa, Evita Palacio Ferreyra y Palacio Dionisi",
+    "lugar": "Nueva Córdoba (martes a domingo; lunes cerrado)",
+    "cat": "arte",
+    "precio": 1000,
+    "nota_precio": "general",
+    "quien": "saf",
+    "vibe": "Muestras de arte contemporáneo y fotografía. Circuito de 3 museos $2.500; grupo familiar (hasta 6) $2.500; menores de 16 gratis.",
+    "kind": "centro",
+    "creativo": true,
+    "url": "https://cultura.cba.gov.ar/muestras-en-espacios-y-museos-provinciales-128/",
+    "hora": "10:00–19:00",
+    "hora_clima": 14,
+    "dias_semana": [1, 2, 3, 4, 5, 6],
+    "gratis_dia_semana": [2],
+    "valido_hasta": "2026-11-08"
+  },
+  {
+    "titulo": "Feria de finde en Güemes (Paseo de las Artes)",
+    "lugar": "Barrio Güemes",
+    "cat": "feria",
+    "precio": 0,
+    "nota_precio": "entrada libre",
+    "quien": "saf",
+    "vibe": "Artesanías, diseño y comida. Dato general de fin de semana: horarios a confirmar.",
+    "kind": "guemes",
+    "creativo": true,
+    "a_confirmar": true,
+    "url": "",
+    "hora": "tarde",
+    "hora_clima": 18,
+    "dias_semana": [5, 6]
+  }
+]
