@@ -146,7 +146,7 @@ footer b{color:var(--ink)}
 
   <footer>
     <p><b>Cómo leerlo:</b> los precios son los valores listados en las ticketeras cuando se actualizó la agenda (pueden variar por sector o subir sobre la fecha). Los horarios "Noche" son estimados: confirmalos en el link de cada plan. La temperatura de cada plan es una estimación según el pronóstico del día y la hora. Los lugares marcados "a confirmar" no tienen dirección o dato verificado.</p>
-    <p>Fuentes: agenda de <b>Qué Hacemos</b> y <b>Agencia Córdoba Cultura</b>. Pronóstico: <b>Open-Meteo</b>. La agenda se actualiza sola todos los días.</p>
+    <p>Fuentes: agenda de <b>Qué Hacemos</b> y <b>Agencia Córdoba Cultura</b>. Pronóstico: <b>Open-Meteo</b>. El clima se actualiza solo todos los días; los eventos se cargan cada semana.</p>
   </footer>
 </div>
 
@@ -389,14 +389,22 @@ document.getElementById("surprise").addEventListener("click",function(){
   document.getElementById("tick").innerHTML=t+t;
 })();
 
-/* sello y aviso si la agenda quedó vieja */
+/* sello y avisos */
 (function(){
   var f=function(d){return d.d+"/"+(new Date(d.iso+"T00:00:00").getMonth()+1);};
-  document.getElementById("stamp").textContent="Del "+f(DAYS[0])+" al "+f(DAYS[DAYS.length-1])+" · actualizado "+DATA.generated;
-  if(todayIdx>DAYS.length-1){
+  var txt="Del "+f(DAYS[0])+" al "+f(DAYS[DAYS.length-1])+" · clima actualizado "+DATA.generated;
+  if(DATA.events_updated){
+    var p=DATA.events_updated.split("-");
+    if(p.length===3) txt+=" · eventos cargados el "+parseInt(p[2],10)+"/"+parseInt(p[1],10);
+  }
+  document.getElementById("stamp").textContent=txt;
+  var msg="";
+  if(DATA.aviso) msg=DATA.aviso;
+  else if(todayIdx>DAYS.length-1) msg="Ojo: esta agenda está desactualizada (última actualización: "+DATA.generated+").";
+  if(msg){
     var bn=document.getElementById("banner");
     bn.style.display="block";
-    bn.textContent="Ojo: esta agenda está desactualizada (última actualización: "+DATA.generated+").";
+    bn.textContent=msg;
   }
 })();
 
