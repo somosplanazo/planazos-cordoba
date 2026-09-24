@@ -1,0 +1,8 @@
+{
+  "centro": ["Teatro del Libertador", "Teatro Real", "Teatro Comedia", "Centro Cultural España",
+             "Centro Cultural Córdoba", "Teatro Cultural de la Cañada", "Facultad de Lenguas",
+             "Teatro María Castaña", "Teatro Maria Castaña", "Cabildo", "Museo"],
+  "guemes": ["Club Paraguay", "Chilli Street"],
+  "grande": ["Quality", "Forja", "Palacio Alsina", "Opus Costanera", "Estadio Kempes", "Kempes"],
+  "auto": ["Teatro Ciudad de las Artes"]
+}
