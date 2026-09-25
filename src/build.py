@@ -65,6 +65,7 @@ def planes_desde_manual(fechas):
     """Lee data/eventos.json (agenda cargada a mano, sin scraping)."""
     doc = leer_json(RAIZ / "data" / "eventos.json")
     idx = {f.isoformat(): i for i, f in enumerate(fechas)}
+    lugares = classify.cargar_lugares()
     planes = []
     for e in doc["eventos"]:
         dias = [idx[f] for f in e["fechas"] if f in idx]
@@ -76,8 +77,10 @@ def planes_desde_manual(fechas):
             "kind": e.get("kind", "otro"), "cr": bool(e.get("cr")), "url": e.get("url", ""),
             "pnote": e.get("pnote", ""), "freeDays": [], "out": bool(e.get("out")),
             "unv": bool(e.get("unv")), "wh": e.get("wh"),
+            "cultural": e.get("cultural", classify.es_centro_cultural(e["venue"], lugares)),
         })
-    return planes, doc.get("actualizado", "")
+    proximos = doc.get("proximos", [])
+    return planes, doc.get("actualizado", ""), proximos
 
 
 def planes_desde_extras(fechas):
@@ -136,17 +139,22 @@ def main():
                   "la página buena con una vacía. Revisá src/scrape.py.", file=sys.stderr)
             sys.exit(1)
     else:
-        planes, eventos_al = planes_desde_manual(fechas)
+        planes, eventos_al, proximos_crudos = planes_desde_manual(fechas)
         if len(planes) < 5:
             aviso = ("Todavía no se cargó la agenda de eventos de esta semana. "
                      "El clima y los museos siguen al día.")
+    proximos = [{
+        "title": p["title"], "venue": p.get("venue", ""), "cat": p.get("cat", "musica"),
+        "fecha_evento": p.get("fecha_evento", ""), "price": p.get("price"),
+        "pnote": p.get("pnote", ""), "nota": p.get("nota", ""), "url": p.get("url", ""),
+    } for p in proximos_crudos] if fuente != "quehacemos" else []
     planes += planes_desde_extras(fechas)
     for i, p in enumerate(planes):
         p["id"] = i
 
     datos = {"start": hoy.isoformat(), "days": dias, "events": planes,
              "generated": ahora.strftime("%d/%m/%Y %H:%M"),
-             "aviso": aviso, "events_updated": eventos_al}
+             "aviso": aviso, "events_updated": eventos_al, "proximos": proximos}
     js = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")
     plantilla = (RAIZ / "template.html").read_text(encoding="utf-8")
     if "/*DATA*/null/*END*/" not in plantilla:
