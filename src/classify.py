@@ -22,6 +22,11 @@ def cargar_lugares():
         return json.load(f)
 
 
+def es_centro_cultural(lugar, lugares):
+    n = _norm(lugar)
+    return any(_norm(x) in n for x in lugares.get("cultural", []))
+
+
 def kind_de_lugar(lugar, lugares):
     n = _norm(lugar)
     for kind, nombres in lugares.items():
@@ -137,7 +142,7 @@ def clasificar(ev, cfg, lugares):
         "cr": es_creativo(cat, ev), "url": ev["url"], "pnote": pnote,
         "freeDays": [], "out": False,
         "unv": (not ev["lugar"]) or ev["lugar"].strip().lower() in ("córdoba", "cordoba"),
-        "wh": None,
+        "wh": None, "cultural": es_centro_cultural(ev["lugar"], lugares),
     }
 
 
