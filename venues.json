@@ -1,0 +1,44 @@
+{
+ "centro": [
+  "Teatro del Libertador",
+  "Teatro Real",
+  "Teatro Comedia",
+  "Centro Cultural España",
+  "Centro Cultural Córdoba",
+  "Teatro Cultural de la Cañada",
+  "Facultad de Lenguas",
+  "Teatro María Castaña",
+  "Teatro Maria Castaña",
+  "Cabildo",
+  "Museo"
+ ],
+ "guemes": [
+  "Club Paraguay",
+  "Chilli Street"
+ ],
+ "grande": [
+  "Quality",
+  "Forja",
+  "Palacio Alsina",
+  "Opus Costanera",
+  "Estadio Kempes",
+  "Kempes"
+ ],
+ "auto": [
+  "Teatro Ciudad de las Artes"
+ ],
+ "cultural": [
+  "Centro Cultural España",
+  "Centro Cultural Córdoba",
+  "Casa de Pepino",
+  "CePIA",
+  "Paseo del Buen Pastor",
+  "Museo Caraffa",
+  "Evita Palacio Ferreyra",
+  "Palacio Dionisi",
+  "Cabildo",
+  "Museo Iberoamericano",
+  "Casa Radical",
+  "Centro Cultural Casona"
+ ]
+}
