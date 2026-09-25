@@ -109,6 +109,19 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .warn{font-size:12px;font-weight:800;color:var(--on);background:var(--orange);border-radius:6px;padding:1px 7px;align-self:flex-start}
 .empty{border:3px dashed var(--line);border-radius:16px;padding:26px;text-align:center;font-weight:700;background:var(--card)}
 .count{font-weight:800;margin:6px 0 0}
+.__anchor{}
+.proximos{margin:34px 0 10px;border:3px solid var(--line);border-radius:18px;background:var(--card);padding:16px;box-shadow:6px 6px 0 var(--orange)}
+.proximos .ph{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 4px}
+.proximos .ph h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,4vw,30px);margin:0}
+.proximos .warnbadge{background:var(--orange);color:var(--on);font-weight:800;font-size:12.5px;border:2px solid var(--line);border-radius:999px;padding:3px 10px}
+.proximos > p.lead{margin:2px 0 14px;font-weight:600;color:var(--muted);font-size:14px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:14px}
+.pcard{background:var(--bg);border:2.5px solid var(--line);border-radius:14px;padding:11px}
+.pcard .pdate{display:inline-block;font-weight:800;font-size:12.5px;background:var(--yellow);border:2px solid var(--line);border-radius:8px;padding:2px 8px;margin-bottom:6px}
+.pcard h3{margin:2px 0 2px;font-size:17px;font-weight:800}
+.pcard .pvenue{margin:0 0 6px;font-size:13.5px;color:var(--muted);font-weight:600}
+.pcard .pnota{margin:0 0 8px;font-size:13px}
+.pcard a{font-weight:800;font-size:13.5px}
 footer{margin:36px 0 12px;font-size:13px;color:var(--muted);border-top:3px solid var(--line);padding-top:12px}
 footer b{color:var(--ink)}
 </style>
@@ -138,11 +151,14 @@ footer b{color:var(--ink)}
     <div class="row"><span class="lab">Con quién</span><span id="whos" class="row"></span></div>
     <div class="row"><span class="lab">Bolsillo</span><span id="prices" class="row"></span>
       <button class="chip" id="crBtn" type="button" aria-pressed="false">🎨 Solo lo creativo</button>
+      <button class="chip" id="cultBtn" type="button" aria-pressed="false">🏛️ Centros culturales</button>
       <button class="chip" id="favBtn" type="button" aria-pressed="false">❤️ Mis planes</button></div>
   </section>
 
   <div class="count" id="count"></div>
   <main id="results"></main>
+
+  <section class="proximos" id="proximos" hidden></section>
 
   <footer>
     <p><b>Cómo leerlo:</b> los precios son los valores listados en las ticketeras cuando se actualizó la agenda (pueden variar por sector o subir sobre la fecha). Los horarios "Noche" son estimados: confirmalos en el link de cada plan. La temperatura de cada plan es una estimación según el pronóstico del día y la hora. Los lugares marcados "a confirmar" no tienen dirección o dato verificado.</p>
@@ -231,7 +247,7 @@ function timeLabel(e){
 function sortKey(e){ var h=hourOf(e); return h==null?99:h; }
 
 /* ---------- estado ---------- */
-var S={day:"all",cat:"all",who:"all",price:"all",q:"",cr:false,fav:false};
+var S={day:"all",cat:"all",who:"all",price:"all",q:"",cr:false,fav:false,cult:false};
 var favs=[];
 try{ favs=JSON.parse(localStorage.getItem("planazos-favs")||"[]"); if(!Array.isArray(favs)) favs=[]; }catch(err){ favs=[]; }
 function saveFavs(){ try{ localStorage.setItem("planazos-favs",JSON.stringify(favs)); }catch(err){} }
@@ -289,6 +305,7 @@ function renderFilters(){
   chipRow("whos",[{v:"all",t:"Todos"},{v:"s",t:"🧍 Sola"},{v:"a",t:"👯 Amigos"},{v:"f",t:"👨‍👩‍👧 Familia"}],"who");
   chipRow("prices",[{v:"all",t:"Cualquiera"},{v:"free",t:"Gratis"},{v:"15k",t:"Hasta $15.000"}],"price");
   document.getElementById("crBtn").setAttribute("aria-pressed",S.cr);
+  document.getElementById("cultBtn").setAttribute("aria-pressed",S.cult);
   document.getElementById("favBtn").setAttribute("aria-pressed",S.fav);
 }
 
@@ -300,6 +317,7 @@ function match(e,di){
   if(S.price==="free"){ if(!(e.price===0||e.freeDays.indexOf(di)>-1)) return false; }
   if(S.price==="15k"){ if(!(e.price===0||e.freeDays.indexOf(di)>-1||(typeof e.price==="number"&&e.price<=15000))) return false; }
   if(S.cr&&!e.cr) return false;
+  if(S.cult&&!e.cultural) return false;
   if(S.fav&&favs.indexOf(e.id)<0) return false;
   if(S.q){
     var hay=(e.title+" "+e.venue+" "+e.vibe+" "+CATS[e.cat].l).toLowerCase();
@@ -311,6 +329,7 @@ function cardHTML(e,di){
   var c=CATS[e.cat], pr=priceInfo(e,di), rd=ride(e);
   var tags=""; ["s","a","f"].forEach(function(k){ if(e.who.indexOf(k)>-1) tags+='<span class="tag">'+WHO[k]+'</span>'; });
   if(e.cr) tags+='<span class="tag">🎨 Creativo</span>';
+  if(e.cultural) tags+='<span class="tag">🏛️ Centro cultural</span>';
   var isFav=favs.indexOf(e.id)>-1;
   var warn=(e.out?'<span class="warn">Fuera de la capital</span>':"")+(e.unv?'<span class="warn">A confirmar</span>':"");
   return '<article class="card" data-id="'+e.id+'" style="--c:'+c.c+'">'
@@ -327,8 +346,29 @@ function cardHTML(e,di){
     +(e.url?'<a class="more" href="'+esc(e.url)+'" target="_blank" rel="noopener noreferrer">Ver info y entradas ↗</a>':"")
     +'</article>';
 }
+function proximoCardHTML(p){
+  var c=CATS[p.cat]||CATS.musica;
+  var pr = (p.price===0)?"GRATIS":(typeof p.price==="number")?fmt(p.price):"Ver precio en el link";
+  return '<article class="pcard" style="--c:'+c.c+'">'
+    +'<span class="pdate">'+esc(p.fecha_evento||"Fecha a confirmar")+'</span>'
+    +'<h3>'+esc(p.title)+'</h3>'
+    +'<p class="pvenue">📍 '+esc(p.venue||"")+(p.out?" (fuera de la capital)":"")+'</p>'
+    +(p.nota?'<p class="pnota">'+esc(p.nota)+'</p>':'')
+    +'<p class="pnota">💸 '+esc(pr)+(p.pnote?" · "+esc(p.pnote):"")+'</p>'
+    +(p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer">Ver info y entradas ↗</a>':"")
+    +'</article>';
+}
+function renderProximos(){
+  var box=document.getElementById("proximos");
+  var lista=(DATA.proximos||[]);
+  if(!lista.length){ box.hidden=true; return; }
+  box.hidden=false;
+  box.innerHTML='<div class="ph"><h2>🔥 Próximos eventos</h2><span class="warnbadge">⏰ Se agotan: comprá con anticipación</span></div>'
+    +'<p class="lead">Shows y festivales que ya están a la venta para más adelante. No son de esta semana, pero si esperás capaz te quedás sin entrada.</p>'
+    +'<div class="pgrid">'+lista.map(proximoCardHTML).join("")+'</div>';
+}
 function render(){
-  renderDays(); renderPanel(); renderFilters();
+  renderDays(); renderPanel(); renderFilters(); renderProximos();
   var list=document.getElementById("results"), html="", total=0;
   var range = S.day==="all" ? [0,1,2,3,4,5,6] : [S.day];
   range.forEach(function(di){
@@ -362,6 +402,7 @@ document.getElementById("days").addEventListener("click",function(ev){
 document.querySelector(".filters").addEventListener("click",function(ev){
   var b=ev.target.closest("button"); if(!b) return;
   if(b.id==="crBtn"){ S.cr=!S.cr; render(); return; }
+  if(b.id==="cultBtn"){ S.cult=!S.cult; render(); return; }
   if(b.id==="favBtn"){ S.fav=!S.fav; render(); return; }
   if(b.id==="surprise") return;
   var k=b.getAttribute("data-k"); if(!k) return;
