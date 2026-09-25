@@ -1580,5 +1580,62 @@
    "out": false,
    "wh": null
   }
+ ],
+ "proximos": [
+  {
+   "title": "David Bisbal",
+   "venue": "Quality Arena",
+   "cat": "musica",
+   "fecha_evento": "Miércoles 14 de octubre de 2026",
+   "price": null,
+   "nota": "Gira grande, suele agotarse por sector.",
+   "url": "https://www.songkick.com/es/concerts/43214453-david-bisbal-at-quality-arena"
+  },
+  {
+   "title": "Babasónicos",
+   "venue": "Plaza de la Música",
+   "cat": "musica",
+   "fecha_evento": "Viernes 23 de octubre de 2026",
+   "price": null,
+   "nota": "Uno de los shows más pedidos del año en Córdoba.",
+   "url": "https://www.songkick.com/es/concerts/43214205-babasonicos-at-plaza-de-la-musica"
+  },
+  {
+   "title": "Romeo Santos y Prince Royce",
+   "venue": "Estadio Mario Alberto Kempes",
+   "cat": "musica",
+   "fecha_evento": "Jueves 12 de noviembre de 2026",
+   "price": null,
+   "nota": "Estadio: las entradas de campo suelen agotarse primero.",
+   "url": "https://www.songkick.com/es/concerts/43233230-romeo-santos-at-estadio-mario-alberto-kempes"
+  },
+  {
+   "title": "Gorillaz",
+   "venue": "Estadio Mario Alberto Kempes",
+   "cat": "musica",
+   "fecha_evento": "Jueves 26 de noviembre de 2026",
+   "price": null,
+   "nota": "Única fecha en Córdoba de la gira. Alta demanda esperada.",
+   "url": "https://www.songkick.com/es/concerts/43227234-gorillaz-at-estadio-mario-alberto-kempes"
+  },
+  {
+   "title": "Soy Luna y Disney",
+   "venue": "Quality Center",
+   "cat": "musica",
+   "fecha_evento": "Domingo 29 de noviembre de 2026",
+   "price": null,
+   "nota": "Show familiar: conviene comprar temprano para sentarse juntos.",
+   "url": "https://www.songkick.com/es/concerts/43320722-soy-luna-at-quality-center"
+  },
+  {
+   "title": "Cosquín Rock 2027",
+   "venue": "Santa María de Punilla (a las afueras)",
+   "cat": "musica",
+   "fecha_evento": "Sábado 6 de febrero de 2027",
+   "price": null,
+   "nota": "Festival de varios días: los abonos anticipados son los más baratos y se agotan por tanda.",
+   "url": "https://www.songkick.com/es/festivals/963934-cosquin-rock/id/43391413-cosquin-rock-2027",
+   "out": true
+  }
  ]
 }
