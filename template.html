@@ -122,6 +122,35 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .pcard .pvenue{margin:0 0 6px;font-size:13.5px;color:var(--muted);font-weight:600}
 .pcard .pnota{margin:0 0 8px;font-size:13px}
 .pcard a{font-weight:800;font-size:13.5px}
+
+.acctwrap{position:absolute;right:4px;top:4px}
+@media(max-width:560px){.acctwrap{position:static;margin:10px 0 0}}
+.acctbtn{border:2.5px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-weight:800;font-size:13.5px;box-shadow:3px 3px 0 var(--shadow)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal[hidden]{display:none}
+.modalbox{position:relative;max-width:380px;width:100%;max-height:88vh;overflow:auto;background:var(--card);border:3px solid var(--line);border-radius:18px;padding:20px;box-shadow:6px 6px 0 var(--shadow)}
+.modalclose{position:absolute;right:10px;top:10px;border:2px solid var(--line);background:var(--card);border-radius:50%;width:30px;height:30px;font-weight:800}
+.modalbox h2{font-family:var(--display);font-weight:400;margin:0 0 12px;font-size:24px}
+.modalbox label{display:block;font-size:13px;font-weight:800;margin:10px 0 4px}
+.modalbox input,.modalbox textarea,.modalbox select{width:100%;border:2.5px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;background:var(--bg);color:var(--ink)}
+.modalbox textarea{min-height:64px;resize:vertical}
+.authmsg{margin:10px 0 0;font-size:13.5px;font-weight:700;min-height:1.2em}
+.authmsg.ok{color:#1a9c5c}
+.authmsg.err{color:#c0392b}
+.bitacora{margin:34px 0 10px;border:3px solid var(--line);border-radius:18px;background:var(--card);padding:16px;box-shadow:6px 6px 0 var(--purple)}
+.bitacora .ph h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,4vw,30px);margin:0 0 4px}
+.bitlogin{font-weight:700;color:var(--muted)}
+.bitform{display:grid;gap:8px;max-width:480px;margin:10px 0 20px}
+.stars{font-size:26px;letter-spacing:3px;cursor:pointer;user-select:none}
+.stars span{opacity:.35}
+.stars span.on{opacity:1}
+.bitlist{display:grid;gap:10px}
+.bitcard{border:2.5px solid var(--line);border-radius:14px;background:var(--bg);padding:10px 12px}
+.bitcard h3{margin:0 0 2px;font-size:16px}
+.bitcard .bstars{color:var(--orange);font-weight:800}
+.bitcard p{margin:3px 0;font-size:13.5px}
+.bitcard .bmeta{color:var(--muted);font-weight:600}
+.bitdel{border:none;background:none;color:var(--muted);font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-top:4px}
 footer{margin:36px 0 12px;font-size:13px;color:var(--muted);border-top:3px solid var(--line);padding-top:12px}
 footer b{color:var(--ink)}
 </style>
@@ -133,6 +162,7 @@ footer b{color:var(--ink)}
     <div class="sticker">Córdoba<br>capital</div>
     <p class="sub">Todo lo que pasa en Córdoba capital esta semana: recitales, orquesta, museos, teatro, fiestas y más. Con precio, clima, qué ponerte y cómo llegar.</p>
     <span class="stamp" id="stamp">Cargando…</span>
+    <div class="acctwrap"><button class="acctbtn" id="acctBtn" type="button">👤 Entrar</button></div>
   </header>
 
   <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
@@ -160,12 +190,61 @@ footer b{color:var(--ink)}
 
   <section class="proximos" id="proximos" hidden></section>
 
-  <footer>
+<div class="modal" id="authModal" hidden>
+  <div class="modalbox">
+    <button class="modalclose" id="authClose" type="button" aria-label="Cerrar">✕</button>
+    <div id="authLoggedBox" hidden>
+      <h2>Hola 👋</h2>
+      <p id="authNombre" style="font-weight:700"></p>
+      <button class="chip" id="logoutBtn" type="button">Salir de mi cuenta</button>
+    </div>
+    <div id="authFormBox">
+      <h2>Tu cuenta</h2>
+      <label>Nombre (para tu bitácora)</label>
+      <input type="text" id="authNombreInput" placeholder="Ej: Coti">
+      <label>Mail</label>
+      <input type="email" id="authEmail" placeholder="vos@mail.com" autocomplete="email">
+      <label>Contraseña</label>
+      <input type="password" id="authPass" placeholder="mínimo 6 caracteres" autocomplete="current-password">
+      <div class="row" style="margin-top:12px">
+        <button class="chip" id="signupBtn" type="button">Crear cuenta</button>
+        <button class="chip" id="loginBtn" type="button">Entrar</button>
+      </div>
+      <p class="authmsg" id="authMsg"></p>
+    </div>
+  </div>
+</div>
+
+
+  
+<section class="bitacora" id="bitacoraSec" hidden>
+  <div class="ph"><h2>📓 Mi bitácora</h2></div>
+  <div id="bitLoggedOut" class="bitlogin">Entrá con tu cuenta (botón de arriba) para anotar los planes a los que fuiste, calificarlos y guardar una anécdota.</div>
+  <div id="bitLoggedIn" hidden>
+    <form id="bitForm" class="bitform">
+      <input type="text" id="bitTitulo" placeholder="¿A qué plan fuiste?" required>
+      <input type="date" id="bitFecha">
+      <select id="bitCategoria"></select>
+      <div class="stars" id="bitStars" data-val="0">
+        <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+      </div>
+      <input type="text" id="bitConQuien" placeholder="¿Con quién fuiste? (sola, con amigos, con X...)">
+      <textarea id="bitAnecdota" placeholder="Anécdota (opcional)"></textarea>
+      <input type="text" id="bitRedes" placeholder="Redes o link para recordarlo (opcional)">
+      <button class="chip" type="submit" style="justify-self:start">Guardar en mi bitácora</button>
+      <p class="authmsg" id="bitMsg"></p>
+    </form>
+    <div id="bitList" class="bitlist"></div>
+  </div>
+</section>
+
+<footer>
     <p><b>Cómo leerlo:</b> los precios son los valores listados en las ticketeras cuando se actualizó la agenda (pueden variar por sector o subir sobre la fecha). Los horarios "Noche" son estimados: confirmalos en el link de cada plan. La temperatura de cada plan es una estimación según el pronóstico del día y la hora. Los lugares marcados "a confirmar" no tienen dirección o dato verificado.</p>
     <p>Fuentes: agenda de <b>Qué Hacemos</b> y <b>Agencia Córdoba Cultura</b>. Pronóstico: <b>Open-Meteo</b>. El clima se actualiza solo todos los días; los eventos se cargan cada semana.</p>
   </footer>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -330,6 +409,7 @@ function cardHTML(e,di){
   var tags=""; ["s","a","f"].forEach(function(k){ if(e.who.indexOf(k)>-1) tags+='<span class="tag">'+WHO[k]+'</span>'; });
   if(e.cr) tags+='<span class="tag">🎨 Creativo</span>';
   if(e.cultural) tags+='<span class="tag">🏛️ Centro cultural</span>';
+  if(window.__topCat && e.cat===window.__topCat) tags+='<span class="tag" style="background:var(--yellow)">✨ Para vos</span>';
   var isFav=favs.indexOf(e.id)>-1;
   var warn=(e.out?'<span class="warn">Fuera de la capital</span>':"")+(e.unv?'<span class="warn">A confirmar</span>':"");
   return '<article class="card" data-id="'+e.id+'" style="--c:'+c.c+'">'
@@ -450,6 +530,169 @@ document.getElementById("surprise").addEventListener("click",function(){
 })();
 
 render();
+window.__renderAgenda=render;
+window.__CATS=CATS;
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var SUPA_URL = "https://eucaqybkueaveqzlihyx.supabase.co";
+var SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1Y2FxeWJrdWVhdmVxemxpaHl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzNjkyMzIsImV4cCI6MjEwNTk0NTIzMn0.Q7XKhSMTFnOJ9gyF0as91Qg7QGgvdFrbngfZT5_8Dus";
+var sb = window.supabase.createClient(SUPA_URL, SUPA_ANON);
+
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+function showMsg(el,texto,ok){ el.textContent=texto; el.className="authmsg "+(ok?"ok":"err"); }
+
+var sesion = null;
+
+function abrirModal(){ $("authModal").hidden=false; }
+function cerrarModal(){ $("authModal").hidden=true; }
+$("acctBtn").addEventListener("click",abrirModal);
+$("authClose").addEventListener("click",cerrarModal);
+$("authModal").addEventListener("click",function(ev){ if(ev.target.id==="authModal") cerrarModal(); });
+
+function pintarCuenta(){
+  var logueado = !!sesion;
+  $("authLoggedBox").hidden = !logueado;
+  $("authFormBox").hidden = logueado;
+  $("bitLoggedOut").hidden = logueado;
+  $("bitLoggedIn").hidden = !logueado;
+  $("bitacoraSec").hidden = false;
+  if(logueado){
+    $("acctBtn").textContent = "👤 " + (sesion.nombre || "Mi cuenta");
+    $("authNombre").textContent = "Estás como " + (sesion.nombre || sesion.email);
+    cargarBitacora();
+    cargarGustos();
+  } else {
+    $("acctBtn").textContent = "👤 Entrar";
+    window.__topCat = null;
+  }
+}
+
+sb.auth.onAuthStateChange(function(_ev, session){
+  if(session && session.user){
+    sb.from("perfiles").select("nombre").eq("id",session.user.id).maybeSingle().then(function(r){
+      sesion = {id:session.user.id, email:session.user.email, nombre:(r.data&&r.data.nombre)||""};
+      pintarCuenta();
+    });
+  } else {
+    sesion = null;
+    pintarCuenta();
+  }
+});
+
+$("signupBtn").addEventListener("click",function(){
+  var nombre=$("authNombreInput").value.trim()||"Planazo Anónimo";
+  var email=$("authEmail").value.trim(), pass=$("authPass").value;
+  if(!email||pass.length<6){ showMsg($("authMsg"),"Poné un mail válido y una contraseña de al menos 6 caracteres.",false); return; }
+  sb.auth.signUp({email:email, password:pass, options:{data:{nombre:nombre}}}).then(function(r){
+    if(r.error){ showMsg($("authMsg"), r.error.message, false); return; }
+    showMsg($("authMsg"),"¡Cuenta creada! Si tu proyecto pide confirmar el mail, revisá tu casilla. Si no, ya estás dentro.",true);
+  });
+});
+$("loginBtn").addEventListener("click",function(){
+  var email=$("authEmail").value.trim(), pass=$("authPass").value;
+  sb.auth.signInWithPassword({email:email, password:pass}).then(function(r){
+    if(r.error){ showMsg($("authMsg"), r.error.message, false); return; }
+    showMsg($("authMsg"),"¡Lista!",true);
+    setTimeout(cerrarModal,600);
+  });
+});
+$("logoutBtn").addEventListener("click",function(){ sb.auth.signOut(); cerrarModal(); });
+
+/* ---------- bitácora ---------- */
+function poblarCategorias(){
+  var sel=$("bitCategoria"), cats=window.__CATS||{};
+  var h="";
+  Object.keys(cats).forEach(function(k){ h+='<option value="'+k+'">'+cats[k].e+" "+cats[k].l+"</option>"; });
+  sel.innerHTML=h;
+}
+poblarCategorias();
+
+var estrellas=0;
+$("bitStars").addEventListener("click",function(ev){
+  var v=ev.target.getAttribute("data-v"); if(!v) return;
+  estrellas=parseInt(v,10);
+  Array.prototype.forEach.call($("bitStars").children,function(sp){
+    sp.classList.toggle("on", parseInt(sp.getAttribute("data-v"),10)<=estrellas);
+  });
+});
+
+function bitCardHTML(row){
+  var estr="★★★★★".slice(0,row.calificacion||0)+"☆☆☆☆☆".slice(0,5-(row.calificacion||0));
+  return '<article class="bitcard">'
+    +'<h3>'+esc(row.titulo_evento)+'</h3>'
+    +'<p class="bstars">'+estr+'</p>'
+    +(row.fecha_evento?'<p class="bmeta">📅 '+esc(row.fecha_evento)+'</p>':'')
+    +(row.con_quien?'<p class="bmeta">👥 '+esc(row.con_quien)+'</p>':'')
+    +(row.anecdota?'<p>'+esc(row.anecdota)+'</p>':'')
+    +(row.redes?'<p class="bmeta">🔗 '+esc(row.redes)+'</p>':'')
+    +'<button class="bitdel" data-id="'+row.id+'" type="button">Borrar</button>'
+    +'</article>';
+}
+function cargarBitacora(){
+  sb.from("bitacora").select("*").order("fecha_evento",{ascending:false,nullsFirst:false}).then(function(r){
+    if(r.error){ $("bitList").innerHTML=""; return; }
+    $("bitList").innerHTML = r.data.map(bitCardHTML).join("") || '<p class="bitlogin">Todavía no cargaste ningún plan.</p>';
+  });
+}
+$("bitList").addEventListener("click",function(ev){
+  var b=ev.target.closest(".bitdel"); if(!b) return;
+  sb.from("bitacora").delete().eq("id",b.getAttribute("data-id")).then(function(){ cargarBitacora(); });
+});
+
+$("bitForm").addEventListener("submit",function(ev){
+  ev.preventDefault();
+  if(!sesion){ return; }
+  var fila={
+    usuario_id: sesion.id,
+    titulo_evento: $("bitTitulo").value.trim(),
+    fecha_evento: $("bitFecha").value || null,
+    categoria: $("bitCategoria").value,
+    calificacion: estrellas || null,
+    con_quien: $("bitConQuien").value.trim() || null,
+    anecdota: $("bitAnecdota").value.trim() || null,
+    redes: $("bitRedes").value.trim() || null,
+  };
+  if(!fila.titulo_evento){ showMsg($("bitMsg"),"Contame a qué plan fuiste.",false); return; }
+  sb.from("bitacora").insert(fila).then(function(r){
+    if(r.error){ showMsg($("bitMsg"), r.error.message, false); return; }
+    showMsg($("bitMsg"),"¡Guardado!",true);
+    if(fila.calificacion && fila.calificacion>=4) sumarGusto(fila.categoria);
+    $("bitForm").reset();
+    estrellas=0; Array.prototype.forEach.call($("bitStars").children,function(sp){sp.classList.remove("on");});
+    cargarBitacora();
+  });
+});
+
+/* ---------- gustos / recomendación simple ---------- */
+function sumarGusto(categoria){
+  sb.from("gustos").select("puntaje").eq("usuario_id",sesion.id).eq("categoria",categoria).maybeSingle().then(function(r){
+    var actual=(r.data&&r.data.puntaje)||0;
+    sb.from("gustos").upsert({usuario_id:sesion.id, categoria:categoria, puntaje:actual+1, actualizado_en:new Date().toISOString()}).then(function(){ cargarGustos(); });
+  });
+}
+function cargarGustos(){
+  sb.from("gustos").select("categoria,puntaje").order("puntaje",{ascending:false}).limit(1).then(function(r){
+    window.__topCat = (r.data && r.data[0]) ? r.data[0].categoria : null;
+    if(window.__renderAgenda) window.__renderAgenda();
+  });
+}
+
+/* sesión inicial */
+sb.auth.getSession().then(function(r){
+  var session=r.data && r.data.session;
+  if(session && session.user){
+    sb.from("perfiles").select("nombre").eq("id",session.user.id).maybeSingle().then(function(rr){
+      sesion={id:session.user.id, email:session.user.email, nombre:(rr.data&&rr.data.nombre)||""};
+      pintarCuenta();
+    });
+  } else {
+    pintarCuenta();
+  }
+});
 })();
 </script>
 </body>
