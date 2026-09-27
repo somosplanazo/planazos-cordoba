@@ -125,6 +125,13 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .pcard .pvenue{margin:0 0 6px;font-size:13.5px;color:var(--muted);font-weight:600}
 .pcard .pnota{margin:0 0 8px;font-size:13px}
 .pcard a{font-weight:800;font-size:13.5px}
+
+.accbtn{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;width:100%}
+.accbtn .ph{flex:1}
+.accarrow{font-size:20px;transition:transform .2s;flex:0 0 auto}
+.accopen .accarrow{transform:rotate(180deg)}
+.acccontent{display:none;margin-top:10px}
+.accopen .acccontent{display:block}
 .cartelera{margin:34px 0 10px;border:3px solid var(--line);border-radius:18px;background:var(--card);padding:16px;box-shadow:6px 6px 0 var(--lime)}
 .cartelera .ph h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,4vw,30px);margin:0 0 4px}
 .cartelera > p.lead{margin:2px 0 14px;font-weight:600;color:var(--muted);font-size:14px}
@@ -548,18 +555,18 @@ function renderCartelera(){
   var lista=(DATA.cartelera||[]);
   if(!lista.length){ box.hidden=true; return; }
   box.hidden=false;
-  box.innerHTML='<div class="ph"><h2>🎬 Cartelera de cine</h2></div>'
-    +'<p class="lead">Lo que se estrena y lo que sigue en pantalla esta semana. Sin horarios: tocá el link de cada peli para ver funciones y comprar en la web oficial.</p>'
-    +'<div class="pgrid">'+lista.map(carteleraCardHTML).join("")+'</div>';
+  box.innerHTML='<button type="button" class="accbtn" data-acc="cartelera"><div class="ph"><h2>🎬 Cartelera de cine</h2></div><span class="accarrow">⌄</span></button>'
+    +'<div class="acccontent"><p class="lead">Lo que se estrena y lo que sigue en pantalla esta semana. Sin horarios: tocá el link de cada peli para ver funciones y comprar en la web oficial.</p>'
+    +'<div class="pgrid">'+lista.map(carteleraCardHTML).join("")+'</div></div>';
 }
 function renderProximos(){
   var box=document.getElementById("proximos");
   var lista=(DATA.proximos||[]);
   if(!lista.length){ box.hidden=true; return; }
   box.hidden=false;
-  box.innerHTML='<div class="ph"><h2>🔥 Próximos eventos</h2><span class="warnbadge">⏰ Se agotan: comprá con anticipación</span></div>'
-    +'<p class="lead">Shows y festivales que ya están a la venta para más adelante. No son de esta semana, pero si esperás capaz te quedás sin entrada.</p>'
-    +'<div class="pgrid">'+lista.map(proximoCardHTML).join("")+'</div>';
+  box.innerHTML='<button type="button" class="accbtn" data-acc="proximos"><div class="ph"><h2>🔥 Próximos eventos</h2><span class="warnbadge">⏰ Se agotan: comprá con anticipación</span></div><span class="accarrow">⌄</span></button>'
+    +'<div class="acccontent"><p class="lead">Shows y festivales que ya están a la venta para más adelante. No son de esta semana, pero si esperás capaz te quedás sin entrada.</p>'
+    +'<div class="pgrid">'+lista.map(proximoCardHTML).join("")+'</div></div>';
 }
 function render(){
   renderDays(); renderPanel(); renderFilters(); renderProximos(); renderCartelera();
@@ -608,6 +615,10 @@ document.getElementById("results").addEventListener("click",function(ev){
   var id=parseInt(b.getAttribute("data-fav"),10), i=favs.indexOf(id);
   if(i>-1) favs.splice(i,1); else favs.push(id);
   saveFavs(); render();
+});
+document.addEventListener("click",function(ev){
+  var b=ev.target.closest(".accbtn"); if(!b) return;
+  b.closest("."+ (b.getAttribute("data-acc")==="proximos"?"proximos":"cartelera")).classList.toggle("accopen");
 });
 document.getElementById("surprise").addEventListener("click",function(){
   var cards=document.querySelectorAll(".card");
