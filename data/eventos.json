@@ -1637,5 +1637,47 @@
    "url": "https://www.songkick.com/es/festivals/963934-cosquin-rock/id/43391413-cosquin-rock-2027",
    "out": true
   }
+ ],
+ "cartelera": [
+  {
+   "title": "El corazón de la bestia",
+   "genero": "Acción / Thriller de supervivencia",
+   "duracion": "101 min",
+   "sinopsis": "Brad Pitt es un oficial de fuerzas especiales que sobrevive a un accidente aéreo en Alaska junto a su perro de combate.",
+   "estreno": true,
+   "url": "https://www.cinesargentinos.com.ar/"
+  },
+  {
+   "title": "La isla olvidada",
+   "genero": "Animación (DreamWorks)",
+   "duracion": "109 min",
+   "sinopsis": "Aventura animada familiar que lleva al público a un mundo fantástico.",
+   "estreno": true,
+   "url": "https://www.cinesargentinos.com.ar/"
+  },
+  {
+   "title": "Fall 2: Deadpoint",
+   "genero": "Thriller de supervivencia extremo",
+   "duracion": "97 min",
+   "sinopsis": "Secuela del thriller de altura: otra vez al límite, otra vez sin red.",
+   "estreno": true,
+   "url": "https://www.cinesargentinos.com.ar/"
+  },
+  {
+   "title": "Avengers: Endgame (edición especial Bonus)",
+   "genero": "Reestreno · Acción / Marvel",
+   "duracion": "181 min",
+   "sinopsis": "Vuelve a las salas con material exclusivo y un adelanto de Avengers: Doomsday.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/"
+  },
+  {
+   "title": "Cineclub Municipal Hugo del Carril",
+   "genero": "Programación variable · Cine club",
+   "duracion": null,
+   "sinopsis": "Ciclos, retrospectivas y cine de autor a precios accesibles. Blvd. San Juan 49.",
+   "estreno": false,
+   "url": ""
+  }
  ]
 }
