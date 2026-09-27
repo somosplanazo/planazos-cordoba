@@ -38,6 +38,9 @@ a{color:inherit}
 .sticker{position:absolute;right:4px;top:18px;width:96px;height:96px;border-radius:50%;background:var(--orange);border:3px solid var(--line);box-shadow:4px 4px 0 var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--display);font-size:15px;line-height:1.05;transform:rotate(12deg);color:var(--on)}
 @media(max-width:560px){.sticker{display:none}}
 
+
+.bitbar{display:none;justify-content:flex-end;margin:-6px 0 10px}
+.bitbar.on{display:flex}
 .ticker{overflow:hidden;border:3px solid var(--line);border-radius:12px;background:var(--yellow);color:var(--on);margin:16px 0;box-shadow:4px 4px 0 var(--shadow)}
 .ticker div{display:inline-block;white-space:nowrap;padding:8px 0;font-weight:800;animation:tick 38s linear infinite}
 .ticker b{margin:0 18px}
@@ -161,6 +164,15 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .bitcard .bmeta{color:var(--muted);font-weight:600}
 .bitdel{border:none;background:none;color:var(--muted);font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-top:4px}
 
+.bitwindow{position:fixed;inset:0;background:linear-gradient(135deg,var(--mint),var(--blue),var(--purple));display:flex;align-items:flex-start;justify-content:center;padding:16px;z-index:55;overflow:auto}
+.bitwindow[hidden]{display:none}
+.bitwbox{position:relative;max-width:600px;width:100%;margin:20px auto;background:var(--card);border:3px solid var(--line);border-radius:22px;padding:22px;box-shadow:8px 8px 0 rgba(0,0,0,.25)}
+.bitwhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px}
+.bitwhead h2{font-family:var(--display);font-weight:400;font-size:28px;margin:0}
+.bitwhead p{margin:4px 0 0;font-size:13.5px;color:var(--muted);font-weight:600}
+.qrow{margin:14px 0 4px}
+.qrow > span{display:block;font-weight:800;font-size:13.5px;margin-bottom:6px}
+
 .onboard{position:fixed;inset:0;background:linear-gradient(135deg,var(--pink),var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
 .onboard[hidden]{display:none}
 .onboardbox{position:relative;max-width:460px;width:100%;max-height:90vh;overflow:auto;background:var(--card);border:3px solid var(--line);border-radius:22px;padding:22px;box-shadow:8px 8px 0 rgba(0,0,0,.25)}
@@ -190,6 +202,8 @@ footer b{color:var(--ink)}
     <span class="stamp" id="stamp">Cargando…</span>
     <div class="acctwrap"><button class="acctbtn" id="acctBtn" type="button">👤 Entrar</button></div>
   </header>
+
+  <div class="bitbar" id="bitBar"><button class="acctbtn" id="bitNavBtn" type="button">📓 Mi bitácora de planes</button></div>
 
   <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
   <div class="banner" id="banner"></div>
@@ -247,6 +261,62 @@ footer b{color:var(--ink)}
 
   
 
+
+<div class="bitwindow" id="bitWindow" hidden>
+  <div class="bitwbox">
+    <div class="bitwhead">
+      <div>
+        <h2>📓 Tu bitácora</h2>
+        <p>Contá lo que quieras — la anécdota es toda tuya. Lo demás nos ayuda a entender qué tipo de planes les gustan más por acá 😉</p>
+      </div>
+      <button class="modalclose" id="bitwClose" type="button" aria-label="Cerrar">✕</button>
+    </div>
+    <div id="bitLoggedOut" class="bitlogin">Entrá con tu cuenta para anotar los planes a los que fuiste, calificarlos y guardar una anécdota.</div>
+    <div id="bitLoggedIn" hidden>
+      <form id="bitForm" class="bitform">
+        <input type="text" id="bitTitulo" placeholder="¿A qué plan fuiste?" required>
+        <input type="date" id="bitFecha">
+        <select id="bitCategoria"></select>
+        <div class="stars" id="bitStars" data-val="0">
+          <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+        </div>
+        <input type="text" id="bitConQuien" placeholder="¿Con quién fuiste? (sola, con amigos, con X...)">
+        <textarea id="bitAnecdota" placeholder="Anécdota (opcional) — contá lo que quieras, sin filtro"></textarea>
+        <input type="text" id="bitRedes" placeholder="Redes o link para recordarlo (opcional)">
+
+        <div class="qrow"><span>¿Volverías? 🔁</span>
+          <div class="obchips" id="bitVolveria">
+            <button type="button" class="obchip" data-v="si">Sí, buenísimo</button>
+            <button type="button" class="obchip" data-v="tal_vez">Tal vez</button>
+            <button type="button" class="obchip" data-v="no">No, paso</button>
+          </div>
+        </div>
+        <div class="qrow"><span>¿Cómo te enteraste? 📡</span>
+          <div class="obchips" id="bitEntero">
+            <button type="button" class="obchip" data-v="planazos">Por Planazos</button>
+            <button type="button" class="obchip" data-v="redes">Redes sociales</button>
+            <button type="button" class="obchip" data-v="amigos">Me lo dijo alguien</button>
+            <button type="button" class="obchip" data-v="ya_sabia">Ya lo sabía</button>
+          </div>
+        </div>
+        <div class="qrow"><span>¿Cómo saliste? 🎭</span>
+          <div class="obchips" id="bitAnimo">
+            <button type="button" class="obchip" data-v="epico">🔥 Épico</button>
+            <button type="button" class="obchip" data-v="tranqui">😌 Tranqui</button>
+            <button type="button" class="obchip" data-v="me_rei">😂 Me reí mucho</button>
+            <button type="button" class="obchip" data-v="me_emociono">🥹 Me emocionó</button>
+            <button type="button" class="obchip" data-v="meh">😴 Meh</button>
+          </div>
+        </div>
+
+        <button class="chip" type="submit" style="justify-self:start;margin-top:14px">Guardar en mi bitácora</button>
+        <p class="authmsg" id="bitMsg"></p>
+      </form>
+      <div id="bitList" class="bitlist"></div>
+    </div>
+  </div>
+</div>
+
 <div class="onboard" id="onboardModal" hidden>
   <div class="onboardbox">
     <div class="obhead">
@@ -262,26 +332,6 @@ footer b{color:var(--ink)}
   </div>
 </div>
 
-<section class="bitacora" id="bitacoraSec" hidden>
-  <div class="ph"><h2>📓 Mi bitácora</h2></div>
-  <div id="bitLoggedOut" class="bitlogin">Entrá con tu cuenta (botón de arriba) para anotar los planes a los que fuiste, calificarlos y guardar una anécdota.</div>
-  <div id="bitLoggedIn" hidden>
-    <form id="bitForm" class="bitform">
-      <input type="text" id="bitTitulo" placeholder="¿A qué plan fuiste?" required>
-      <input type="date" id="bitFecha">
-      <select id="bitCategoria"></select>
-      <div class="stars" id="bitStars" data-val="0">
-        <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
-      </div>
-      <input type="text" id="bitConQuien" placeholder="¿Con quién fuiste? (sola, con amigos, con X...)">
-      <textarea id="bitAnecdota" placeholder="Anécdota (opcional)"></textarea>
-      <input type="text" id="bitRedes" placeholder="Redes o link para recordarlo (opcional)">
-      <button class="chip" type="submit" style="justify-self:start">Guardar en mi bitácora</button>
-      <p class="authmsg" id="bitMsg"></p>
-    </form>
-    <div id="bitList" class="bitlist"></div>
-  </div>
-</section>
 
 <footer>
     <p><b>Cómo leerlo:</b> los precios son los valores listados en las ticketeras cuando se actualizó la agenda (pueden variar por sector o subir sobre la fecha). Los horarios "Noche" son estimados: confirmalos en el link de cada plan. La temperatura de cada plan es una estimación según el pronóstico del día y la hora. Los lugares marcados "a confirmar" no tienen dirección o dato verificado.</p>
@@ -614,6 +664,11 @@ var sesion = null;
 function abrirModal(){ $("authModal").hidden=false; }
 function cerrarModal(){ $("authModal").hidden=true; }
 $("acctBtn").addEventListener("click",abrirModal);
+$("bitNavBtn").addEventListener("click",function(){
+  if(!sesion){ abrirModal(); return; }
+  $("bitWindow").hidden=false;
+});
+$("bitwClose").addEventListener("click",function(){ $("bitWindow").hidden=true; });
 $("authClose").addEventListener("click",cerrarModal);
 $("authModal").addEventListener("click",function(ev){ if(ev.target.id==="authModal") cerrarModal(); });
 
@@ -623,7 +678,7 @@ function pintarCuenta(){
   $("authFormBox").hidden = logueado;
   $("bitLoggedOut").hidden = logueado;
   $("bitLoggedIn").hidden = !logueado;
-  $("bitacoraSec").hidden = false;
+  $("bitBar").classList.toggle("on", logueado);
   if(logueado){
     $("acctBtn").textContent = "👤 " + (sesion.nombre || "Mi cuenta");
     $("authNombre").textContent = "Estás como " + (sesion.nombre || sesion.email);
@@ -677,6 +732,21 @@ function poblarCategorias(){
 poblarCategorias();
 
 var estrellas=0;
+var bitExtra={volveria:null, entero:null, animo:null};
+function armarChipGroup(id,key){
+  $(id).addEventListener("click",function(ev){
+    var b=ev.target.closest(".obchip"); if(!b) return;
+    var v=b.getAttribute("data-v");
+    bitExtra[key] = (bitExtra[key]===v) ? null : v; // tocar de nuevo deselecciona
+    Array.prototype.forEach.call($(id).children,function(c){
+      c.setAttribute("aria-pressed", c.getAttribute("data-v")===bitExtra[key]);
+    });
+  });
+}
+armarChipGroup("bitVolveria","volveria");
+armarChipGroup("bitEntero","entero");
+armarChipGroup("bitAnimo","animo");
+function resetChips(id){ Array.prototype.forEach.call($(id).children,function(c){ c.setAttribute("aria-pressed","false"); }); }
 $("bitStars").addEventListener("click",function(ev){
   var v=ev.target.getAttribute("data-v"); if(!v) return;
   estrellas=parseInt(v,10);
@@ -687,6 +757,8 @@ $("bitStars").addEventListener("click",function(ev){
 
 function bitCardHTML(row){
   var estr="★★★★★".slice(0,row.calificacion||0)+"☆☆☆☆☆".slice(0,5-(row.calificacion||0));
+  var ANIMO_LBL={epico:"🔥 Épico",tranqui:"😌 Tranqui",me_rei:"😂 Me reí mucho",me_emociono:"🥹 Me emocionó",meh:"😴 Meh"};
+  var VOLV_LBL={si:"🔁 Volvería",tal_vez:"🔁 Tal vez vuelva",no:"🔁 No repite"};
   return '<article class="bitcard">'
     +'<h3>'+esc(row.titulo_evento)+'</h3>'
     +'<p class="bstars">'+estr+'</p>'
@@ -694,6 +766,8 @@ function bitCardHTML(row){
     +(row.con_quien?'<p class="bmeta">👥 '+esc(row.con_quien)+'</p>':'')
     +(row.anecdota?'<p>'+esc(row.anecdota)+'</p>':'')
     +(row.redes?'<p class="bmeta">🔗 '+esc(row.redes)+'</p>':'')
+    +(row.animo?'<p class="bmeta">'+esc(ANIMO_LBL[row.animo]||row.animo)+'</p>':'')
+    +(row.volveria?'<p class="bmeta">'+esc(VOLV_LBL[row.volveria]||row.volveria)+'</p>':'')
     +'<button class="bitdel" data-id="'+row.id+'" type="button">Borrar</button>'
     +'</article>';
 }
@@ -720,6 +794,9 @@ $("bitForm").addEventListener("submit",function(ev){
     con_quien: $("bitConQuien").value.trim() || null,
     anecdota: $("bitAnecdota").value.trim() || null,
     redes: $("bitRedes").value.trim() || null,
+    volveria: bitExtra.volveria,
+    como_entero: bitExtra.entero,
+    animo: bitExtra.animo,
   };
   if(!fila.titulo_evento){ showMsg($("bitMsg"),"Contame a qué plan fuiste.",false); return; }
   sb.from("bitacora").insert(fila).then(function(r){
@@ -728,6 +805,8 @@ $("bitForm").addEventListener("submit",function(ev){
     if(fila.calificacion && fila.calificacion>=4) sumarGusto(fila.categoria);
     $("bitForm").reset();
     estrellas=0; Array.prototype.forEach.call($("bitStars").children,function(sp){sp.classList.remove("on");});
+    bitExtra={volveria:null, entero:null, animo:null};
+    resetChips("bitVolveria"); resetChips("bitEntero"); resetChips("bitAnimo");
     cargarBitacora();
   });
 });
