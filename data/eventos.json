@@ -1645,7 +1645,7 @@
    "duracion": "101 min",
    "sinopsis": "Brad Pitt es un oficial de fuerzas especiales que sobrevive a un accidente aéreo en Alaska junto a su perro de combate.",
    "estreno": true,
-   "url": "https://www.cinesargentinos.com.ar/"
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
   },
   {
    "title": "La isla olvidada",
@@ -1653,7 +1653,7 @@
    "duracion": "109 min",
    "sinopsis": "Aventura animada familiar que lleva al público a un mundo fantástico.",
    "estreno": true,
-   "url": "https://www.cinesargentinos.com.ar/"
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
   },
   {
    "title": "Fall 2: Deadpoint",
@@ -1661,15 +1661,71 @@
    "duracion": "97 min",
    "sinopsis": "Secuela del thriller de altura: otra vez al límite, otra vez sin red.",
    "estreno": true,
-   "url": "https://www.cinesargentinos.com.ar/"
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
   },
   {
    "title": "Avengers: Endgame (edición especial Bonus)",
    "genero": "Reestreno · Acción / Marvel",
    "duracion": "181 min",
    "sinopsis": "Vuelve a las salas con material exclusivo y un adelanto de Avengers: Doomsday.",
+   "estreno": true,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Resident Evil: Noche Cero",
+   "genero": "Terror / Acción",
+   "duracion": null,
+   "sinopsis": "Desplazó a Spider-Man del primer puesto de la taquilla esta semana.",
    "estreno": false,
-   "url": "https://www.cinesargentinos.com.ar/"
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Spider-Man: Un Nuevo Día",
+   "genero": "Acción / Superhéroes",
+   "duracion": null,
+   "sinopsis": "El hombre araña sigue en pantalla grande tras varias semanas fuerte en boletería.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Coyote vs. Acme",
+   "genero": "Animación / Comedia",
+   "duracion": null,
+   "sinopsis": "El Coyote se enfrenta legalmente a ACME por sus productos defectuosos. Con Looney Tunes de fondo.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Toy Story 5",
+   "genero": "Animación (Pixar)",
+   "duracion": null,
+   "sinopsis": "Uno de los grandes éxitos de taquilla del año: Woody, Buzz y Jessie otra vez juntos, ahora contra la tecnología.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Pepita, la pistolera",
+   "genero": "Drama / Western argentino",
+   "duracion": null,
+   "sinopsis": "Uno de los estrenos argentinos más esperados del año, dirigida por Lucía Puenzo y protagonizada por Luisana Lopilato.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Hechizo de Amor: La magia continúa",
+   "genero": "Comedia romántica",
+   "duracion": null,
+   "sinopsis": "El regreso de la comedia romántica que sigue sumando funciones.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
+  },
+  {
+   "title": "Yo, Narciso",
+   "genero": "Comedia",
+   "duracion": null,
+   "sinopsis": "Película argentina protagonizada por Adrián Suar, todavía en cartel.",
+   "estreno": false,
+   "url": "https://www.cinesargentinos.com.ar/cartelera/"
   },
   {
    "title": "Cineclub Municipal Hugo del Carril",
