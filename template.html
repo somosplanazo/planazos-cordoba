@@ -13,7 +13,7 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
   --bg:#fff4dc; --card:#fffdf7; --ink:#1a1326; --line:#1a1326; --shadow:#1a1326; --muted:#5d5470; --on:#1a1326;
-  --pink:#ff4d94; --blue:#6f93ff; --yellow:#ffd23f; --mint:#35e0b0; --orange:#ff8a1f; --purple:#a884ff; --green:#8ee35a; --teal:#2fd0e0;
+  --pink:#ff4d94; --blue:#6f93ff; --yellow:#ffd23f; --mint:#35e0b0; --orange:#ff8a1f; --purple:#a884ff; --green:#8ee35a; --teal:#2fd0e0; --lime:#c6f24e;
   --display:"Bagel Fat One","Arial Black",Impact,system-ui,sans-serif;
   --body:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
@@ -122,6 +122,15 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .pcard .pvenue{margin:0 0 6px;font-size:13.5px;color:var(--muted);font-weight:600}
 .pcard .pnota{margin:0 0 8px;font-size:13px}
 .pcard a{font-weight:800;font-size:13.5px}
+.cartelera{margin:34px 0 10px;border:3px solid var(--line);border-radius:18px;background:var(--card);padding:16px;box-shadow:6px 6px 0 var(--lime)}
+.cartelera .ph h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,4vw,30px);margin:0 0 4px}
+.cartelera > p.lead{margin:2px 0 14px;font-weight:600;color:var(--muted);font-size:14px}
+.ccard{background:var(--bg);border:2.5px solid var(--line);border-radius:14px;padding:11px}
+.ccard .cbadge{display:inline-block;font-weight:800;font-size:12px;background:var(--lime);border:2px solid var(--line);border-radius:8px;padding:1px 8px;margin-bottom:6px}
+.ccard h3{margin:2px 0 2px;font-size:16.5px;font-weight:800}
+.ccard .cgen{margin:0 0 6px;font-size:12.5px;color:var(--muted);font-weight:700}
+.ccard p.csyn{margin:0 0 8px;font-size:13px}
+.ccard a{font-weight:800;font-size:13.5px}
 
 .acctwrap{position:absolute;right:4px;top:4px}
 @media(max-width:560px){.acctwrap{position:static;margin:10px 0 0}}
@@ -189,6 +198,8 @@ footer b{color:var(--ink)}
   <main id="results"></main>
 
   <section class="proximos" id="proximos" hidden></section>
+
+  <section class="cartelera" id="cartelera" hidden></section>
 
 <div class="modal" id="authModal" hidden>
   <div class="modalbox">
@@ -262,7 +273,8 @@ var CATS = {
   arte:{l:"Museos y arte",e:"🖼️",c:"var(--mint)"},
   feria:{l:"Ferias y expos",e:"🧺",c:"var(--yellow)"},
   aire:{l:"Aire libre y deporte",e:"🥾",c:"var(--green)"},
-  charla:{l:"Charlas y congresos",e:"💬",c:"var(--teal)"}
+  charla:{l:"Charlas y congresos",e:"💬",c:"var(--teal)"},
+  cine:{l:"Cine",e:"🎬",c:"var(--lime)"}
 };
 var WHO = {s:"🧍 Va bien sola", a:"👯 Con amigos", f:"👨‍👩‍👧 En familia"};
 
@@ -438,6 +450,24 @@ function proximoCardHTML(p){
     +(p.url?'<a href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer">Ver info y entradas ↗</a>':"")
     +'</article>';
 }
+function carteleraCardHTML(m){
+  return '<article class="ccard">'
+    +(m.estreno?'<span class="cbadge">🆕 Estreno</span>':'')
+    +'<h3>'+esc(m.title)+'</h3>'
+    +'<p class="cgen">'+esc(m.genero||"")+(m.duracion?" · "+esc(m.duracion):"")+'</p>'
+    +(m.sinopsis?'<p class="csyn">'+esc(m.sinopsis)+'</p>':'')
+    +(m.url?'<a href="'+esc(m.url)+'" target="_blank" rel="noopener noreferrer">Ver horarios y entradas ↗</a>':'<span style="font-size:13px;color:var(--muted)">Consultá horarios en boletería</span>')
+    +'</article>';
+}
+function renderCartelera(){
+  var box=document.getElementById("cartelera");
+  var lista=(DATA.cartelera||[]);
+  if(!lista.length){ box.hidden=true; return; }
+  box.hidden=false;
+  box.innerHTML='<div class="ph"><h2>🎬 Cartelera de cine</h2></div>'
+    +'<p class="lead">Lo que se estrena y lo que sigue en pantalla esta semana. Sin horarios: tocá el link de cada peli para ver funciones y comprar en la web oficial.</p>'
+    +'<div class="pgrid">'+lista.map(carteleraCardHTML).join("")+'</div>';
+}
 function renderProximos(){
   var box=document.getElementById("proximos");
   var lista=(DATA.proximos||[]);
@@ -448,7 +478,7 @@ function renderProximos(){
     +'<div class="pgrid">'+lista.map(proximoCardHTML).join("")+'</div>';
 }
 function render(){
-  renderDays(); renderPanel(); renderFilters(); renderProximos();
+  renderDays(); renderPanel(); renderFilters(); renderProximos(); renderCartelera();
   var list=document.getElementById("results"), html="", total=0;
   var range = S.day==="all" ? [0,1,2,3,4,5,6] : [S.day];
   range.forEach(function(di){
