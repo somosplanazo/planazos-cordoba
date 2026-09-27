@@ -160,6 +160,23 @@ input[type=search]{flex:1 1 200px;min-width:0;border:3px solid var(--line);borde
 .bitcard p{margin:3px 0;font-size:13.5px}
 .bitcard .bmeta{color:var(--muted);font-weight:600}
 .bitdel{border:none;background:none;color:var(--muted);font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:underline;padding:0;margin-top:4px}
+
+.onboard{position:fixed;inset:0;background:linear-gradient(135deg,var(--pink),var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
+.onboard[hidden]{display:none}
+.onboardbox{position:relative;max-width:460px;width:100%;max-height:90vh;overflow:auto;background:var(--card);border:3px solid var(--line);border-radius:22px;padding:22px;box-shadow:8px 8px 0 rgba(0,0,0,.25)}
+.obhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.obstep{font-weight:800;font-size:12.5px;background:var(--yellow);border:2px solid var(--line);border-radius:999px;padding:2px 10px}
+.obtitle{font-family:var(--display);font-weight:400;font-size:26px;margin:8px 0 4px;line-height:1.05}
+.obsub{font-size:14.5px;color:var(--muted);font-weight:600;margin:0 0 16px}
+.obchips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.obchip{border:2.5px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-weight:800;font-size:14px}
+.obchip[aria-pressed="true"]{background:var(--mint)}
+.obnav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}
+.obnav .chip{flex:0 0 auto}
+.obnav .primary{background:var(--pink)}
+.obdots{display:flex;gap:5px;justify-content:center;margin:14px 0 0}
+.obdots span{width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.35}
+.obdots span.on{opacity:1;background:var(--pink)}
 footer{margin:36px 0 12px;font-size:13px;color:var(--muted);border-top:3px solid var(--line);padding-top:12px}
 footer b{color:var(--ink)}
 </style>
@@ -207,6 +224,7 @@ footer b{color:var(--ink)}
     <div id="authLoggedBox" hidden>
       <h2>Hola 👋</h2>
       <p id="authNombre" style="font-weight:700"></p>
+      <button class="chip" id="retakeBtn" type="button">🎯 Volver a contarnos qué te gusta</button>
       <button class="chip" id="logoutBtn" type="button">Salir de mi cuenta</button>
     </div>
     <div id="authFormBox">
@@ -228,6 +246,22 @@ footer b{color:var(--ink)}
 
 
   
+
+<div class="onboard" id="onboardModal" hidden>
+  <div class="onboardbox">
+    <div class="obhead">
+      <span class="obstep" id="obStepLabel">1/5</span>
+      <button class="modalclose" id="obSkip" type="button" aria-label="Saltar">✕</button>
+    </div>
+    <div id="obContent"></div>
+    <div class="obdots" id="obDots"></div>
+    <div class="obnav">
+      <button class="chip" id="obBack" type="button">← Atrás</button>
+      <button class="chip primary" id="obNext" type="button">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
 <section class="bitacora" id="bitacoraSec" hidden>
   <div class="ph"><h2>📓 Mi bitácora</h2></div>
   <div id="bitLoggedOut" class="bitlogin">Entrá con tu cuenta (botón de arriba) para anotar los planes a los que fuiste, calificarlos y guardar una anécdota.</div>
@@ -603,9 +637,10 @@ function pintarCuenta(){
 
 sb.auth.onAuthStateChange(function(_ev, session){
   if(session && session.user){
-    sb.from("perfiles").select("nombre").eq("id",session.user.id).maybeSingle().then(function(r){
-      sesion = {id:session.user.id, email:session.user.email, nombre:(r.data&&r.data.nombre)||""};
+    sb.from("perfiles").select("nombre,preferencias").eq("id",session.user.id).maybeSingle().then(function(r){
+      sesion = {id:session.user.id, email:session.user.email, nombre:(r.data&&r.data.nombre)||"", preferencias:(r.data&&r.data.preferencias)||null};
       pintarCuenta();
+      quizasAbrirEncuesta();
     });
   } else {
     sesion = null;
@@ -715,14 +750,106 @@ function cargarGustos(){
 sb.auth.getSession().then(function(r){
   var session=r.data && r.data.session;
   if(session && session.user){
-    sb.from("perfiles").select("nombre").eq("id",session.user.id).maybeSingle().then(function(rr){
-      sesion={id:session.user.id, email:session.user.email, nombre:(rr.data&&rr.data.nombre)||""};
+    sb.from("perfiles").select("nombre,preferencias").eq("id",session.user.id).maybeSingle().then(function(rr){
+      sesion={id:session.user.id, email:session.user.email, nombre:(rr.data&&rr.data.nombre)||"", preferencias:(rr.data&&rr.data.preferencias)||null};
       pintarCuenta();
+      quizasAbrirEncuesta();
     });
   } else {
     pintarCuenta();
   }
 });
+/* ---------- ventana de perfil: mini-encuesta ---------- */
+var OB_STEPS = [
+  {tipo:"info", titulo:"¡Bienvenida/o a Planazos! 🎉",
+   sub:"Antes de arrancar, contanos un toque de vos así te tiramos mejores planes. Son 3 preguntitas cortas, lo prometemos."},
+  {tipo:"multi", key:"categorias", titulo:"¿Qué te tienta más? 👀", sub:"Elegí todas las que quieras.",
+   opciones:function(){ var o=[]; Object.keys(window.__CATS||{}).forEach(function(k){ o.push({v:k,t:window.__CATS[k].e+" "+window.__CATS[k].l}); }); return o; }},
+  {tipo:"single", key:"conQuien", titulo:"¿Con quién salís más seguido? 👯", sub:"",
+   opciones:[{v:"sola",t:"🧍 Sola"},{v:"amigos",t:"👯 Con amigos"},{v:"familia",t:"👨‍👩‍👧 En familia"},{v:"variado",t:"🎲 Un poco de todo"}]},
+  {tipo:"single", key:"plata", titulo:"¿Cómo venís de bolsillo para salir? 💸", sub:"",
+   opciones:[{v:"barato",t:"🪙 Prefiero lo gratis o barato"},{v:"medio",t:"💵 Hasta $15.000 está bien"},{v:"sinlimite",t:"💎 Si vale la pena, no hay límite"}]},
+  {tipo:"single", key:"humor", titulo:"Si Córdoba fuera una fiesta, vos serías... 😜", sub:"Esta es solo para reírnos, no cambia nada (o sí 👀).",
+   opciones:[{v:"primera",t:"🕺 La que llega primera y se va última"},{v:"1am",t:"✨ La que aparece a la 1am con pilas nuevas"},
+             {v:"barra",t:"🍹 La que mira todo desde la barra, feliz"},{v:"11pm",t:"😴 La que ya se quiere ir a las 11"}]},
+  {tipo:"info", titulo:"¡Listo! 🎊", sub:"Ya podés armar tu primer plan y anotarlo en tu bitácora. Gracias por contarnos."},
+];
+var obIdx=0, obRespuestas={};
+
+function obRenderDots(){
+  var h=""; OB_STEPS.forEach(function(_,i){ h+='<span class="'+(i===obIdx?"on":"")+'"></span>'; });
+  $("obDots").innerHTML=h;
+}
+function obRenderPaso(){
+  var paso=OB_STEPS[obIdx];
+  $("obStepLabel").textContent=(obIdx+1)+"/"+OB_STEPS.length;
+  var h='<h2 class="obtitle">'+esc(paso.titulo)+'</h2>'+(paso.sub?'<p class="obsub">'+esc(paso.sub)+'</p>':'');
+  if(paso.tipo==="multi"||paso.tipo==="single"){
+    var opts = typeof paso.opciones==="function" ? paso.opciones() : paso.opciones;
+    var actuales = obRespuestas[paso.key];
+    h+='<div class="obchips" id="obChips">';
+    opts.forEach(function(o){
+      var on = paso.tipo==="multi" ? (Array.isArray(actuales)&&actuales.indexOf(o.v)>-1) : (actuales===o.v);
+      h+='<button type="button" class="obchip" data-v="'+esc(o.v)+'" aria-pressed="'+on+'">'+esc(o.t)+'</button>';
+    });
+    h+='</div>';
+  }
+  $("obContent").innerHTML=h;
+  $("obBack").style.visibility = obIdx===0 ? "hidden" : "visible";
+  $("obNext").textContent = obIdx===OB_STEPS.length-1 ? "A planear 🎉" : (paso.tipo==="info" ? "Empezar" : "Siguiente →");
+  obRenderDots();
+}
+$("obContent").addEventListener("click",function(ev){
+  var b=ev.target.closest(".obchip"); if(!b) return;
+  var paso=OB_STEPS[obIdx], v=b.getAttribute("data-v");
+  if(paso.tipo==="multi"){
+    var arr=obRespuestas[paso.key]||[]; var i=arr.indexOf(v);
+    if(i>-1) arr.splice(i,1); else arr.push(v);
+    obRespuestas[paso.key]=arr;
+  } else {
+    obRespuestas[paso.key]=v;
+  }
+  obRenderPaso();
+});
+$("obBack").addEventListener("click",function(){ if(obIdx>0){ obIdx--; obRenderPaso(); } });
+$("obNext").addEventListener("click",function(){
+  if(obIdx<OB_STEPS.length-1){ obIdx++; obRenderPaso(); }
+  else { guardarEncuesta(); }
+});
+$("obSkip").addEventListener("click",function(){ $("onboardModal").hidden=true; });
+
+function abrirEncuesta(){
+  obIdx=0; obRespuestas=(sesion&&sesion.preferencias)||{};
+  obRenderPaso();
+  $("onboardModal").hidden=false;
+}
+$("retakeBtn").addEventListener("click",function(){ cerrarModal(); abrirEncuesta(); });
+
+function quizasAbrirEncuesta(){
+  if(!sesion) return;
+  var vacio = !sesion.preferencias || Object.keys(sesion.preferencias).length===0;
+  if(vacio) setTimeout(abrirEncuesta, 400);
+}
+
+function guardarEncuesta(){
+  if(!sesion) return;
+  sb.from("perfiles").update({preferencias:obRespuestas}).eq("id",sesion.id).then(function(){
+    sesion.preferencias = obRespuestas;
+    var cats = obRespuestas.categorias||[];
+    var pendientes = cats.length;
+    if(pendientes===0){ $("onboardModal").hidden=true; return; }
+    cats.forEach(function(cat){
+      sb.from("gustos").select("puntaje").eq("usuario_id",sesion.id).eq("categoria",cat).maybeSingle().then(function(r){
+        var actual=(r.data&&r.data.puntaje)||0;
+        sb.from("gustos").upsert({usuario_id:sesion.id, categoria:cat, puntaje:actual+2, actualizado_en:new Date().toISOString()}).then(function(){
+          pendientes--;
+          if(pendientes===0){ $("onboardModal").hidden=true; cargarGustos(); }
+        });
+      });
+    });
+  });
+}
+
 })();
 </script>
 </body>
