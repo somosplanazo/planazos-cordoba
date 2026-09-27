@@ -80,7 +80,8 @@ def planes_desde_manual(fechas):
             "cultural": e.get("cultural", classify.es_centro_cultural(e["venue"], lugares)),
         })
     proximos = doc.get("proximos", [])
-    return planes, doc.get("actualizado", ""), proximos
+    cartelera = doc.get("cartelera", [])
+    return planes, doc.get("actualizado", ""), proximos, cartelera
 
 
 def planes_desde_extras(fechas):
@@ -139,10 +140,11 @@ def main():
                   "la página buena con una vacía. Revisá src/scrape.py.", file=sys.stderr)
             sys.exit(1)
     else:
-        planes, eventos_al, proximos_crudos = planes_desde_manual(fechas)
+        planes, eventos_al, proximos_crudos, cartelera_cruda = planes_desde_manual(fechas)
         if len(planes) < 5:
             aviso = ("Todavía no se cargó la agenda de eventos de esta semana. "
                      "El clima y los museos siguen al día.")
+    cartelera = cartelera_cruda if fuente != "quehacemos" else []
     proximos = [{
         "title": p["title"], "venue": p.get("venue", ""), "cat": p.get("cat", "musica"),
         "fecha_evento": p.get("fecha_evento", ""), "price": p.get("price"),
@@ -154,7 +156,7 @@ def main():
 
     datos = {"start": hoy.isoformat(), "days": dias, "events": planes,
              "generated": ahora.strftime("%d/%m/%Y %H:%M"),
-             "aviso": aviso, "events_updated": eventos_al, "proximos": proximos}
+             "aviso": aviso, "events_updated": eventos_al, "proximos": proximos, "cartelera": cartelera}
     js = json.dumps(datos, ensure_ascii=False).replace("</", "<\\/")
     plantilla = (RAIZ / "template.html").read_text(encoding="utf-8")
     if "/*DATA*/null/*END*/" not in plantilla:
